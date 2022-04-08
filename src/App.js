@@ -1,7 +1,7 @@
 import './App.css';
 import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {Adminadd, Adminedit} from './pages/Admin';
+import { Adminadd, Adminedit } from './pages/Admin';
 import { AddCase, CaseList, IndiciesSearch, CaseMetrics } from './pages/Cases';
 import Edit from './pages/EditCredentials';
 

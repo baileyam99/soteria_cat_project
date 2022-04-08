@@ -55,7 +55,7 @@ const Sidebar = () => {
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
-          <h1 class="cat"> Case Administration Tool</h1>
+          <h1 className="cat"> Case Administration Tool</h1>
         </Nav>
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
