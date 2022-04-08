@@ -14,7 +14,8 @@ class DisplayCaseTable extends React.Component{
 
   callAPI(){
       //fetch data from API
-      fetch("http://localhost:80/soteria_cat_prototype/caseList/index.php?action=view").then(
+      fetch("http://localhost/soteria_cat_prototype/caseList/index.php?action=view")
+      .then(
           (response) => response.json()
       ).then((data)=>{
           console.log(data)
