@@ -1,0 +1,80 @@
+<?php
+
+// Used auth0 PHP API guide: https://auth0.com/docs/quickstart/backend/php?download=true
+// Import the Composer Autoloader to make the SDK classes accessible:
+require 'vendor/autoload.php';
+
+// Load our environment variables from the .env file:
+(Dotenv\Dotenv::createImmutable(__DIR__))->load();
+
+// Now instantiate the Auth0 class with our configuration:
+$auth0 = new \Auth0\SDK\Auth0([
+    'domain' => $_ENV['AUTH0_DOMAIN'],
+    'clientSecret' => $_ENV['AUTH0_CLIENT_SECRET'],
+    'audience' => $_ENV['AUTH0_AUDIENCE']
+]);
+
+// Make SDK use the cache 
+$tokenCache = new \Symfony\Component\Cache\Adapter\FilesystemAdapter();
+$configuration->setTokenCache($tokenCache);
+
+// Extract JSON web token from incoming HTTP request 
+$jwt = $_GET['token'] ?? $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['Authorization'] ?? null;
+
+// If a token is present, process it.
+if ($jwt !== null) {
+    // Trim whitespace from token string.
+    $jwt = trim($jwt);
+
+    // Remove the 'Bearer ' prefix, if present, in the event we're getting an Authorization header that's using it.
+    if (substr($jwt, 0, 7) === 'Bearer ') {
+        $jwt = substr($jwt, 7);
+    }
+
+    // Attempt to decode the token:
+    try {
+        $token = $this->getSdk()->decode($jwt, null, null, null, null, null, null, \Auth0\SDK\Token::TYPE_TOKEN);
+        define('ENDPOINT_AUTHORIZED', true);
+    } catch (\Auth0\SDK\Exception\InvalidTokenException $exception) {
+        // The token wasn't valid. Let's display the error message from the Auth0 SDK.
+        // We'd probably want to show a custom error here for a real world application.
+        die($exception->getMessage());
+    }
+}
+
+// Is the request authorized?
+if (defined('ENDPOINT_AUTHORIZED')) {
+    // Respond with a JSON response:
+    echo json_encode([
+        'authorized' => true,
+        'data' => $token->toArray()
+    ], JSON_PRETTY_PRINT);
+
+    exit;
+}
+
+// Issue a HTTP 401 Unauthorized status:
+http_response_code(401);
+
+// Respond with a JSON response:
+echo json_encode([
+    'authorized' => false,
+    'error' => [
+        'message' => 'You are NOT authorized to be here!'
+    ]
+], JSON_PRETTY_PRINT);
+
+session_start();
+$action = filter_input(INPUT_POST, 'action');
+if ($action === NULL) {
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action === NULL) {
+        $action = 'home';
+    }
+}
+
+if ($action == 'home' && $_SESSION == null) {
+    header("Location: ./home/index.php?action=landing_page");
+}
+
+?>
