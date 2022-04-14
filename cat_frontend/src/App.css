@@ -7,21 +7,23 @@
   font-family: 'Source Sans Pro';
 }
 
-.Soterialogo {
+.Soterialogo{
   height: 40px;
   width: 150px;
-  padding-left: 20px;
+  margin-right: 20px;
+  padding-right: 15px;
 }
+
 
 .cat {
     text-align: left;
     padding-left: 20px;
     font-family: 'Source Sans Pro';
-    color: white;
+    color: #343A40;
 }
 
 html {
-    background-color: #4290e8;  
+    background-color: #323232;  
 }
 body {
     text-align: center;
@@ -31,7 +33,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-    border: 1px solid #001963;
+    border: 1px solid #4290e8;
 }
 header {
     margin: 0;
@@ -54,12 +56,12 @@ header ul {
 
 main {
     margin: 0;
-    margin-bottom: 400px;
+    margin-bottom: 740px;
     padding: .5em 2em .25em;
 }
 footer {
     margin-top: 20px;
-    padding-right: 1em;
+    padding-right: 45%;
     border-top: 2px solid black;
 }
 footer p {

@@ -10,11 +10,13 @@ import '../App.css';
 import logo from '../images/SoteriaImage.png';
 
 const Nav = styled.div`
-  background: #15171c;
+  background: #FFFFF;
+  color:black;
   height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-bottom: 2px solid #383838;
 `;
 
 const NavIcon = styled(Link)`
@@ -27,7 +29,7 @@ const NavIcon = styled(Link)`
 `;
 
 const SidebarNav = styled.nav`
-  background: #15171c;
+  background: #323232;
   width: 250px;
   height: 100vh;
   display: flex;
@@ -50,18 +52,20 @@ const Sidebar = () => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
+      <IconContext.Provider value={{ color: '#323232' }}>
         <Nav>
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
           <h1 className="cat"> Case Administration Tool</h1>
         </Nav>
+      </IconContext.Provider>
+      <IconContext.Provider value={{ color: '#fff' }}>
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
-            <NavIcon to='#'>
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
+            <NavIcon className='slideout' to='#'>
               <img src={logo} className="Soterialogo" alt="logo" />
+              <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;

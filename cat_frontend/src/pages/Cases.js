@@ -1,3 +1,4 @@
+import './Cases.css';
 import React, {useState} from 'react';
 import Axios from 'axios';
 import { DetailsButton, FormSubmitButton} from '../components/Buttons';
@@ -41,7 +42,7 @@ class DisplayCaseTable extends React.Component{
                   <td>{data.lead}</td>
                   <td>{data.caseStatus}</td>
                   <td>{data.openDate}</td>
-                  <td>
+                  <td className = "DetailsButton">
                     <form action='http://localhost/soteria_cat_project/cat_backend/caselist/index.php' method="post">
                       <input type="hidden" name="codename" value={post = data.codename}></input>
                       <DetailsButton type="submit" name="action" value="Details">Details</DetailsButton>
@@ -51,6 +52,7 @@ class DisplayCaseTable extends React.Component{
           )
       })
       return(
+        <main>
           <div className="container">
               <table className="center">
                   <thead>
@@ -70,6 +72,7 @@ class DisplayCaseTable extends React.Component{
               </table>
 
           </div>
+        </main>
       )
   }
 
