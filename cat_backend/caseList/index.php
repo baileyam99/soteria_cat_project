@@ -19,15 +19,25 @@ if ($action == 'view'){
     header('Content-type: application/json');
     echo json_encode($json_array);
 }
+
 if($action == 'Details'){
     $codename = filter_input(INPUT_POST, 'codename');
+    $case = selectCase($codename);
+
 
     if ($codename != false) {
-       header("Location: viewCaseDetails.php?codename=$codename");
+       $json_array = array();
+       while ($row = $case->fetch_assoc()) {
+           $json_array[] = $row;
+        }
+
+        //header("Location: http://localhost:3000/casedetails");
+        header('Content-type: application/json');
+        echo json_encode($json_array);
     }
 
 }
-if($action == 'Open Case'){
+if($action == 'opencase'){
     // Get the product data
     $codename = filter_input(INPUT_POST, 'codename');
     $clientName = filter_input(INPUT_POST, 'clientname');
@@ -48,7 +58,7 @@ if($action == 'Open Case'){
     }
 }
 
-if ($action === 'View Evidence'){
+if ($action === 'viewevidence'){
     $codename = filter_input(INPUT_POST, 'codename');
 
     if ($codename != false) {

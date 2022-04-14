@@ -27,6 +27,13 @@ function openCase(string $codename, string $clientName, string $caseType, string
     
 }
 
+function selectCase($codename) {
+    global $db2;
+    $query = "SELECT * FROM caselist WHERE codename = " . "'" . $codename . "'";
+    $case = mysqli_query($db2, $query);
+    return $case;
+}
+
 function getNotes(string $codename){
     global $db;
     $query = "SELECT * FROM notes WHERE codename= :codename ORDER BY submitDate";
