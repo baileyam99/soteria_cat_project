@@ -31,7 +31,7 @@ if($action == 'Details'){
            $json_array[] = $row;
         }
 
-        //header("Location: http://localhost:3000/casedetails");
+        header("Location: http://localhost:3000/casedetails");
         header('Content-type: application/json');
         echo json_encode($json_array);
     }

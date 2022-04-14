@@ -97,9 +97,10 @@ class DisplayCaseDetails extends React.Component {
 
   callAPI(){
     //fetch data from API
-    Axios.post("http://localhost/soteria_cat_project/cat_backend/caseList/index.php",{
-      codename: post
-    })
+    //Axios.post("http://localhost/soteria_cat_project/cat_backend/caseList/index.php",{
+      //codename: post
+    //})
+    fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php")
     .then(
         (response) => response.json()
     ).then((data)=>{
