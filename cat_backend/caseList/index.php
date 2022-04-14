@@ -1,7 +1,8 @@
-
 <?php
 require('../model/database.php');
 require('../model/case_db.php');
+require('../CORS.php');
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -22,20 +23,12 @@ if ($action == 'view'){
 
 if($action == 'Details'){
     $codename = filter_input(INPUT_POST, 'codename');
-    $case = selectCase($codename);
+    header("Location: viewCaseDetails.php?codename=$codename");
+}
 
-
-    if ($codename != false) {
-       $json_array = array();
-       while ($row = $case->fetch_assoc()) {
-           $json_array[] = $row;
-        }
-
-        header("Location: http://localhost:3000/casedetails");
-        header('Content-type: application/json');
-        echo json_encode($json_array);
-    }
-
+if($action == 'viewdetails') {
+    header('Content-type: application/json');
+    include('details.json');
 }
 if($action == 'opencase'){
     // Get the product data

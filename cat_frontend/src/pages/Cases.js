@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React, { Component } from 'react';
 import Axios from 'axios';
-import { DetailsButton, FormSubmitButton} from '../components/Buttons';
-var location; var post; var response1;
-
+import { FormSubmitButton, DetailsButton } from '../components/Buttons';
+var req; var data; var post; var response1;
 
 // Fetch Case Data and render
-class DisplayCaseTable extends React.Component{
+class DisplayCaseTable extends Component{
 
   constructor(props){
       super(props)
@@ -33,7 +32,7 @@ class DisplayCaseTable extends React.Component{
   render(){
       let tb_data = this.state.list.map((data)=>{
           return(
-              <tr key = {data}>
+              <tr key = {data.codename}>
                   <td>{data.codename}</td>
                   <td>{data.clientName}</td>
                   <td>{data.caseType}</td>
@@ -42,10 +41,10 @@ class DisplayCaseTable extends React.Component{
                   <td>{data.caseStatus}</td>
                   <td>{data.openDate}</td>
                   <td>
-                    <form action='http://localhost/soteria_cat_project/cat_backend/caselist/index.php' method="post">
-                      <input type="hidden" name="codename" value={post = data.codename}></input>
-                      <DetailsButton type="submit" name="action" value="Details">Details</DetailsButton>
-                    </form>
+                  <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
+                    <input type="hidden" name="codename" value={data.codename}></input>
+                    <DetailsButton type='submit' name='action' value='Details'>Details</DetailsButton>
+                  </form>
                   </td>
               </tr>
           )
@@ -87,22 +86,12 @@ class DisplayCaseDetails extends React.Component {
     this.callAPI();
   }
 
-  req = {
-    method: 'POST',
-    headers: {
-      'Content-type' : 'application/json',
-      'Location' : Response.getHeaders(Location)
-    }
-  }
-
   callAPI(){
     //fetch data from API
-    //Axios.post("http://localhost/soteria_cat_project/cat_backend/caseList/index.php",{
-      //codename: post
-    //})
-    fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php")
+    //Axios.post("http://localhost/soteria_cat_project/cat_backend/caseList/index.php", req)
+    fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=viewdetails")
     .then(
-        (response) => response.json()
+      (data) => data.json()
     ).then((data)=>{
         console.log(data)
         this.setState({
@@ -117,10 +106,24 @@ class DisplayCaseDetails extends React.Component {
         <h2>Case: {data.codename}</h2>
       )
     })
+    let details = this.state.list.map((data)=>{
+      return (
+        <main>
+          <label>Client: {data.clientName}</label><br/>
+          <label>Type: {data.caseType}</label><br/>
+          <label>Description: {data.description}</label><br/>
+          <label>Case Lead: {data.lead}</label><br/>
+          <label>Status: {data.caseStatus}</label><br/>
+          <label>Date Opened: {data.openDate}</label><br/>
+          <label>Date Closed: {data.closeDate}</label><br/>
+        </main>
+      )
+    })
     return (
       <main>
         <h1>CASE DETAILS</h1><br/>
-        {codename}
+        {codename}<br/>
+        {details}
       </main>
 
     )

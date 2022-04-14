@@ -1,6 +1,7 @@
 <?php
 require('../model/database.php');
 require('../model/physInv_db.php');
+require('../CORS.php');
 
 $action = filter_input(INPUT_POST, 'action');
 

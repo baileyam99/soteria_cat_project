@@ -2,6 +2,7 @@
 <?php
 require_once('../model/database.php');
 require_once('../model/case_db.php');
+require('../CORS.php')
 
 //$cases = view();
 $date = new DateTime();
