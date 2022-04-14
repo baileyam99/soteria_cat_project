@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/baileyam99/soteria_cat_project.git">
-    <img src="cat_frontend/public/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="cat_frontend/src/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Soteria Case Administration Tool </h3>
