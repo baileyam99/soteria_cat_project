@@ -12,9 +12,4 @@
 <body>
 <header>
     <h1>Soteria Case Administration Tool (CAT) </h1>
-    <nav>
-        <ul>
-            <li><a href="../home/index.php">Home</a></li>
-        </ul>
-    </nav>
 </header>

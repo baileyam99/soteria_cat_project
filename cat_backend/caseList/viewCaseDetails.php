@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+require('../CORS.php');
 require('../model/database.php');
 require('../model/case_db.php');
 $codename= filter_input(INPUT_GET, 'codename');
@@ -14,9 +15,9 @@ $json_array = array();
 while ($row = $case->fetch_assoc()) {
     $json_array[] = $row;
 }
-header("Location: http://localhost:3000/casedetails?codename=$codename");
-header('Content-type: application/json');
-echo json_ecode($json_array);
+$json = json_encode($json_array);
+file_put_contents("details.json", $json);
+header("Location: http://localhost:3000/cases/casedetails?codename=$codename");
 
 ?>
 
