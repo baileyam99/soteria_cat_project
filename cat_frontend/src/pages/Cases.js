@@ -143,16 +143,19 @@ class AddCaseForm extends React.Component{
   constructor(props){
       super(props)
       this.state = {
-          list:[]
+          list:[],
+          list2:[]
       }
 
       this.callAPI = this.callAPI.bind(this)
+      this.callAPI2 = this.callAPI2.bind(this)
       this.callAPI();
+      this.callAPI2();
   }
 
   callAPI(){
     //fetch data from API
-    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=view")
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=types")
     .then(
         (response) => response.json()
     ).then((data)=>{
@@ -163,22 +166,35 @@ class AddCaseForm extends React.Component{
     })
   }
 
+  callAPI2(){
+    //fetch data from API
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=usernames")
+    .then(
+        (response) => response.json()
+    ).then((data2)=>{
+        console.log(data2)
+        this.setState({
+           list2:data2
+        })
+    })
+  }
+
   render(){
     let types = this.state.list.map((data)=>{
       return(
-        <option value={data.caseTye}>{data.caseType}</option>
+        <option value={data.caseType}>{data.caseType}</option>
       )
     })
-    let leads = this.state.list.map((data)=>{
+    let leads = this.state.list2.map((data2)=>{
       return(
-        <option value={data.lead}>{data.lead}</option>
+        <option value={data2.username}>{data2.username}</option>
       )
     })
     return (
       <main>
       <h1>Open New Case</h1>
       <body>
-        <form action='opencase' method='post' id='add_product_form'>
+        <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php?' method='post' id='add_product_form'>
           <label>Codename:</label>
           <input type='text' name='codename'></input><br/>
 
@@ -199,7 +215,7 @@ class AddCaseForm extends React.Component{
           <textarea id='description' name='description' rows='4' cols='50'></textarea><br/><br/>
 
           <label>&nbsp;</label>
-          <FormSubmitButton type='submit' name='action' id='action'>Open Case</FormSubmitButton><br/>
+          <FormSubmitButton type='submit' name='action' value='opencase'>Open Case</FormSubmitButton><br/>
         </form>
       </body>
     </main>

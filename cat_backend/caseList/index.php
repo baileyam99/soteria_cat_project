@@ -21,16 +21,43 @@ if ($action == 'view'){
     echo json_encode($json_array);
 }
 
-if($action == 'Details'){
+if ($action == 'Details'){
     $codename = filter_input(INPUT_POST, 'codename');
     header("Location: viewCaseDetails.php?codename=$codename");
 }
 
-if($action == 'viewdetails') {
+if ($action == 'viewdetails') {
     header('Content-type: application/json');
     include('details.json');
 }
-if($action == 'opencase'){
+
+if ($action == 'types') {
+    global $db2;
+    $query = "SELECT caseType FROM casetypes";
+    $types = mysqli_query($db2, $query);
+
+    $json_array = array();
+    while ($row = $types->fetch_assoc()) {
+        $json_array[] = $row;
+    }
+    header('Content-type: application/json');
+    echo json_encode($json_array);
+}
+
+if ($action == 'usernames') {
+    global $db2;
+    $query = "SELECT username FROM users";
+    $usernames = mysqli_query($db2, $query);
+
+    $json_array = array();
+    while ($row = $usernames->fetch_assoc()) {
+        $json_array[] = $row;
+    }
+    header('Content-type: application/json');
+    echo json_encode($json_array);
+}
+
+if ($action == 'opencase'){
     // Get the product data
     $codename = filter_input(INPUT_POST, 'codename');
     $clientName = filter_input(INPUT_POST, 'clientname');
@@ -47,9 +74,10 @@ if($action == 'opencase'){
         openCase($codename, $clientName, $casetype, $lead, $description, $open_date);
 
         // Display the Product List page
-        include('caseListView.php');
+        header("Location: http://localhost:3000/cases/case_list?added=$codename");
     }
 }
+
 
 if ($action === 'viewevidence'){
     $codename = filter_input(INPUT_POST, 'codename');
