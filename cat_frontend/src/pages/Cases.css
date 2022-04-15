@@ -1,0 +1,22 @@
+body{
+    min-height: 100%;
+}
+
+main {
+    margin: 0;
+    height:850px;
+    padding: .5em 2em .25em;
+}
+
+.center{
+    float:right;
+    width:95%;
+}
+
+table, th, td{
+    border: 1px solid #323232;
+}
+
+.DetailsButton{
+    text-align: center;
+}
