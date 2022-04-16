@@ -19,11 +19,11 @@
     text-align: left;
     padding-left: 20px;
     font-family: 'Source Sans Pro';
-    color: #343A40;
+    color: #fff;
 }
 
 html {
-    background-color: #323232;  
+    background-color: #4290e8;  
 }
 body {
     text-align: center;
@@ -33,7 +33,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     background-color: white;
-    border: 1px solid #4290e8;
+    border: 1px solid black;
 }
 header {
     margin: 0;
@@ -56,7 +56,7 @@ header ul {
 
 main {
     margin: 0;
-    margin-bottom: 740px;
+    margin-bottom: 400px;
     padding: .5em 2em .25em;
 }
 footer {

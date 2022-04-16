@@ -60,4 +60,11 @@ function addNote(string $codename, string $username, string $date, string $body)
         $statement->execute();
         $statement->closeCursor();
 }
+
+function search_case($param, $srch){
+    global $db2;
+    $query = "SELECT * FROM caselist WHERE " . $param . " = '" . $srch . "'";
+    $result = mysqli_query($db2, $query);
+    return $result;
+}
 ?>
