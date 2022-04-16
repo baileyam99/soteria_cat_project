@@ -10,13 +10,11 @@ import '../App.css';
 import logo from '../images/SoteriaImage.png';
 
 const Nav = styled.div`
-  background: #FFFFF;
-  color:black;
+  background: #323232;
   height: 80px;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  border-bottom: 2px solid #383838;
+  align-items: center;;
 `;
 
 const NavIcon = styled(Link)`
@@ -52,7 +50,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#323232' }}>
+      <IconContext.Provider value={{ color: '#fff' }}>
         <Nav>
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />

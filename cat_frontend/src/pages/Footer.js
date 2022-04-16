@@ -8,7 +8,7 @@ class Foot extends Component {
             
             <Fragment>
                 <footer>
-                    <p className='copyright'>Copyright &copy; {currentYear} Soteria</p>
+                    <p>Copyright &copy; {currentYear} Soteria</p>
                 </footer>
             </Fragment>
         )

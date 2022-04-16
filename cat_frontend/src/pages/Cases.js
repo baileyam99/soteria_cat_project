@@ -1,9 +1,8 @@
 import './Cases.css';
 import React, { Component } from 'react';
-import { FormSubmitButton, DetailsButton } from '../components/Buttons';
-var req; var data; var post; var response1;
+import { FormSubmitButton, DetailsButton, GeneralButton } from '../components/Buttons';
 
-// Fetch Case Data and render
+// Fetch Case Data
 class DisplayCaseTable extends Component{
 
   constructor(props){
@@ -17,7 +16,6 @@ class DisplayCaseTable extends Component{
   }
 
   callAPI(){
-      //fetch data from API
       fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=view")
       .then(
           (response) => response.json()
@@ -28,52 +26,153 @@ class DisplayCaseTable extends Component{
           })
       })
   }
-
-  render(){
-      let tb_data = this.state.list.map((data)=>{
-          return(
-              <tr key = {data.codename}>
-                  <td>{data.codename}</td>
-                  <td>{data.clientName}</td>
-                  <td>{data.caseType}</td>
-                  <td>{data.description}</td>
-                  <td>{data.lead}</td>
-                  <td>{data.caseStatus}</td>
-                  <td>{data.openDate}</td>
-                  <td>
-                  <form className = "DetailsButton" action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
-                    <input type="hidden" name="codename" value={data.codename}></input>
-                    <DetailsButton type='submit' name='action' value='Details'>Details</DetailsButton>
-                  </form>
-                  </td>
-              </tr>
-          )
-      })
-      return(
-        <main>
-          <div className="container">
-              <table className="center">
-                  <thead>
-                      <tr>
-                          <th>Codename</th>
-                          <th>Client Name</th>
-                          <th>Case Type</th>
-                          <th>Description</th>
-                          <th>Lead</th>
-                          <th>Case Status</th> 
-                          <th>Open Date</th> 
-                      </tr>
-                  </thead>
-                  <tbody>
-                      {tb_data}
-                  </tbody>
-              </table>
-
-          </div>
-        </main>
-      )
+  search(){
+    fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=viewsearch")
+    .then(
+      (data2) => data2.json()
+    ).then((data2)=>{
+        console.log(data2)
+        this.setState({
+           list2:data2
+        })
+    })
   }
 
+  render(){
+    let tb_data = this.state.list.map((data)=>{
+      return(
+      <tr key = {data.codename}>
+        <td>{data.codename}</td>
+        <td>{data.clientName}</td>
+        <td>{data.caseType}</td>
+        <td>{data.description}</td>
+        <td>{data.lead}</td>
+        <td>{data.caseStatus}</td>
+        <td>{data.openDate}</td>
+        <td>
+          <form className = "DetailsButton" action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
+            <input type="hidden" name="codename" value={data.codename}></input>
+            <DetailsButton type='submit' name='action' value='Details'>Details</DetailsButton>
+            </form>
+            </td>
+            </tr>
+            )
+          })
+    return(
+      <main>
+        <div className="container">
+          <form action="http://localhost/soteria_cat_project/cat_backend/caseList/index.php" method="post">
+            <select name='param'>
+              <option value='codename'>Codename</option>
+              <option value='clientName'>Client Name</option>
+              <option value='caseType'>Case Type</option>
+              <option value='lead'>Case Lead</option>
+            </select>
+            <input type='text' name='srch'></input>
+            <FormSubmitButton type='submit' name='action' value='search'>Search</FormSubmitButton>
+            </form>
+            <table className="center">
+              <thead>
+                <tr>
+                  <th>Codename</th>
+                  <th>Client Name</th>
+                  <th>Case Type</th>
+                  <th>Description</th>
+                  <th>Lead</th>
+                  <th>Case Status</th> 
+                  <th>Open Date</th> 
+                </tr>
+                </thead>
+                <tbody>
+                  {tb_data}
+                </tbody>
+            </table>
+        </div>
+      </main>
+    )
+  }
+};
+
+// Search Case
+class SearchCase extends Component{
+
+  constructor(props){
+      super(props)
+      this.state = {
+          list:[]
+      }
+
+      this.callAPI = this.callAPI.bind(this)
+      this.callAPI();
+  }
+
+  callAPI(){
+    fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=viewsearch")
+    .then(
+      (data) => data.json()
+    ).then((data)=>{
+        console.log(data)
+        this.setState({
+           list:data
+        })
+    })
+  }
+
+
+  render(){
+    let tb_data = this.state.list.map((data)=>{
+      return(
+      <tr key = {data.codename}>
+        <td>{data.codename}</td>
+        <td>{data.clientName}</td>
+        <td>{data.caseType}</td>
+        <td>{data.description}</td>
+        <td>{data.lead}</td>
+        <td>{data.caseStatus}</td>
+        <td>{data.openDate}</td>
+        <td>
+          <form className = "DetailsButton" action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
+            <input type="hidden" name="codename" value={data.codename}></input>
+            <DetailsButton type='submit' name='action' value='Details'>Details</DetailsButton>
+            </form>
+            </td>
+            </tr>
+            )
+          })
+    return(
+      <main>
+        <div className="container">
+          <form action="http://localhost/soteria_cat_project/cat_backend/caseList/index.php" method="post">
+            <select name='param'>
+              <option value='codename'>Codename</option>
+              <option value='clientName'>Client Name</option>
+              <option value='caseType'>Case Type</option>
+              <option value='lead'>Case Lead</option>
+            </select>
+            <input type='text' name='srch'></input>
+            <FormSubmitButton type='submit' name='action' value='search'>Search</FormSubmitButton>
+            </form>
+            <table className="center">
+              <thead>
+                <tr>
+                  <th>Codename</th>
+                  <th>Client Name</th>
+                  <th>Case Type</th>
+                  <th>Description</th>
+                  <th>Lead</th>
+                  <th>Case Status</th> 
+                  <th>Open Date</th> 
+                </tr>
+                </thead>
+                <tbody>
+                  {tb_data}
+                </tbody>
+            </table>
+            <GeneralButton type="submit">View All Cases</GeneralButton>
+        </div>
+      </main>
+    )
+  }
 };
 
 // Displays Case Details
@@ -89,8 +188,6 @@ class DisplayCaseDetails extends React.Component {
   }
 
   callAPI(){
-    //fetch data from API
-    //Axios.post("http://localhost/soteria_cat_project/cat_backend/caseList/index.php", req)
     fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=viewdetails")
     .then(
       (data) => data.json()
@@ -126,20 +223,14 @@ class DisplayCaseDetails extends React.Component {
         <h1>CASE DETAILS</h1><br/>
         {codename}<br/>
         {details}
+        <GeneralButton href="http://localhost:3000/cases/case_list">View All Cases</GeneralButton>
       </main>
 
     )
   }
 };
 
-export const CaseDetails = () => {
-  return (
-    <DisplayCaseDetails />
-  );
-};
-
-
-// Post add case
+// Add Case
 class AddCaseForm extends React.Component{
 
   constructor(props){
@@ -156,7 +247,6 @@ class AddCaseForm extends React.Component{
   }
 
   callAPI(){
-    //fetch data from API
     fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=types")
     .then(
         (response) => response.json()
@@ -169,7 +259,6 @@ class AddCaseForm extends React.Component{
   }
 
   callAPI2(){
-    //fetch data from API
     fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=usernames")
     .then(
         (response) => response.json()
@@ -225,6 +314,13 @@ class AddCaseForm extends React.Component{
   }
 };
 
+// Search Page
+export const SearchCasePage = () => {
+  return (
+    <SearchCase />
+  );
+};
+
 // Add Case Page
 export const AddCasePage = () => {
   return (
@@ -232,49 +328,17 @@ export const AddCasePage = () => {
   )
 };
 
-// Post add case
-class AddNewCase extends React.Component{
-
-  constructor(props){
-      super(props)
-      this.state = {
-          list:[]
-      }
-
-      this.callAPI = this.callAPI.bind(this)
-      this.callAPI();
-  }
-
-  req = {
-    method: 'POST',
-    headers: {'Content-type' : 'application/json'}
-  }
-
-  callAPI(){
-    //fetch data from API
-    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php")
-    .then(
-        (response) => response.json()
-    ).then((data)=>{
-        console.log(data)
-        this.setState({
-           list:data
-        })
-    })
-  }
-};
-
-// adds new case
-export const AddCase = () => {
-  return (
-    <AddNewCase />
-  )
-};
-
 // Case List Page
 export const CaseList = () => {
   return (
     <DisplayCaseTable />
+  );
+};
+
+// Case Details Page
+export const CaseDetails = () => {
+  return (
+    <DisplayCaseDetails />
   );
 };
 
