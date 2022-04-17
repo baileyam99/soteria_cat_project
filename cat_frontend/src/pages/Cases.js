@@ -1,6 +1,7 @@
 import './Cases.css';
 import React, { Component } from 'react';
 import { FormSubmitButton, DetailsButton, GeneralButton } from '../components/Buttons';
+import { Link } from 'react-router-dom';
 
 // Fetch Case Data
 class DisplayCaseTable extends Component{
@@ -80,7 +81,8 @@ class DisplayCaseTable extends Component{
                   <th>Description</th>
                   <th>Lead</th>
                   <th>Case Status</th> 
-                  <th>Open Date</th> 
+                  <th>Open Date</th>
+                  <th></th> 
                 </tr>
                 </thead>
                 <tbody>
@@ -168,7 +170,10 @@ class SearchCase extends Component{
                   {tb_data}
                 </tbody>
             </table>
-            <GeneralButton type="submit">View All Cases</GeneralButton>
+            <Link to="/cases/case_list">
+              <GeneralButton>View All Cases</GeneralButton>
+            </Link>
+            
         </div>
       </main>
     )
@@ -215,6 +220,21 @@ class DisplayCaseDetails extends React.Component {
           <label>Status: {data.caseStatus}</label><br/>
           <label>Date Opened: {data.openDate}</label><br/>
           <label>Date Closed: {data.closeDate}</label><br/>
+          <Link to="/cases/notes">
+            <GeneralButton>View Notes</GeneralButton>
+          </Link>
+          <Link to="/cases/view_evidence">
+            <GeneralButton>View Evidence</GeneralButton>
+          </Link><br/>
+          <Link to="/cases/view_physical_evidence">
+            <GeneralButton>View Physical Evidence</GeneralButton>
+          </Link>
+          <Link to="/cases/edit_case">
+            <GeneralButton>Edit Case</GeneralButton>
+          </Link><br/>
+          <Link to="/cases/case_list">
+            <GeneralButton>View All Cases</GeneralButton>
+          </Link>
         </main>
       )
     })
@@ -223,7 +243,6 @@ class DisplayCaseDetails extends React.Component {
         <h1>CASE DETAILS</h1><br/>
         {codename}<br/>
         {details}
-        <GeneralButton href="http://localhost:3000/cases/case_list">View All Cases</GeneralButton>
       </main>
 
     )
@@ -314,6 +333,19 @@ class AddCaseForm extends React.Component{
   }
 };
 
+// Edit Case
+
+// Edit Case Page
+export const EditCasePage = () => {
+  return (
+    <main>
+      <h1>Edit Case</h1>
+      <h2>Sorry, this page is currently under construction.</h2>
+      <p>We'll finish it as quickly as we can. Thanks!</p>
+    </main>
+  );
+};
+
 // Search Page
 export const SearchCasePage = () => {
   return (
@@ -342,6 +374,7 @@ export const CaseDetails = () => {
   );
 };
 
+// Indicies Search Page
 export const IndiciesSearch = () => {
   return (
     <main>
@@ -352,6 +385,7 @@ export const IndiciesSearch = () => {
   );
 };
 
+// Case Metrics Page
 export const CaseMetrics = () => {
   return (
     <main>
