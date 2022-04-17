@@ -35,7 +35,7 @@ if ($action == 'Details'){
     }
     $json = json_encode($json_array);
     file_put_contents("details.json", $json);
-    header("Location: http://localhost:3000/cases/casedetails?codename=$codename");
+    header("Location: http://localhost:3000/cases/case_details?codename=$codename");
 }
 
 // view details of case

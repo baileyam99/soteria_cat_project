@@ -1,22 +1,32 @@
-body{
+body {
     min-height: 100%;
 }
 
 main {
     margin: 0;
     height:800px;
-    padding: .5em 2em .25em;
+    padding: .5em 2em;
 }
 
-.center{
-    float:right;
-    width:95%;
+.center {
+    float: center;
+    width: 100%;
 }
 
-table, th, td{
-    border: 1px solid #323232;
+table, th, td {
+    border: 1.5px solid #323232;
 }
 
-.DetailsButton{
+th {
+    font-weight: lighter;
+    color: white;
+    background-color: #4290E8;
+}
+
+.DetailsButton {
     text-align: center;
+}
+
+.DetailsButton th {
+    background-color: #4290E8;
 }
