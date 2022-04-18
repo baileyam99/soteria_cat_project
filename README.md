@@ -104,24 +104,24 @@ To get a local copy up and running follow these simple example steps.
    REACT_APP_AUTH0_DOMAIN='ENTER YOUR DOMAIN'
    REACT_APP_AUTH0_CLIENT_ID='ENTER YOUR CLIENT ID'
    ```
-4. Run XAMPP control panel and select 'Start' for MySQL and Apache
+4. Run XAMPP control panel and select `Start` for MySQL and Apache
 5. Open [phpMyAdmin](http://localhost/phpmyadmin/)
-6. Select the 'Import' in the top navigation bar
-7. Select the 'Choose File' option
-8. Navigate to /XAMPP/htdocs/soteria_cat_project/cat_backend and select the 'soteria_cat' SQL file
-9. Select the 'Go' button at the bottom right corner
-10. Select the 'User Accounts' tab on the top naviagtion bar
-11. Select the 'Add user account' link
-12. Under the 'User name' field, type: `cat`
-14. Under the 'Host name' field, select: 'Local' from the dropdown menu
-15. Under the 'Password' field, type: `7PuQp$y4Ph?t-LrZ`
-16. Scroll down to the bottom of the page and select the 'Go' button
-17. Select the 'User Accounts' tab on the top naviagtion bar
-18. Find the 'cat' user and select 'Edit privleges'
-19. Below the top navigation bar, select the 'Database' button
-20. Under the 'Add privileges on the following database(s):' field, select 'soteria_cat' from the menu
-21. Select the 'Go' button
-22. In a terminal, navigate to /xampp/htdocs/soteria_cat_project/cat_frontend
+6. Select the `Import` in the top navigation bar
+7. Select the `Choose File` option
+8. Navigate to `/XAMPP/htdocs/soteria_cat_project/cat_backend` and select the `soteria_cat` SQL file
+9. Select the `Go` button at the bottom right corner
+10. Select the `User Accounts` tab on the top naviagtion bar
+11. Select the `Add user account` link
+12. Under the `User name` field, type: `cat`
+14. Under the `Host name` field, select: 'Local' from the dropdown menu
+15. Under the `Password` field, type: `7PuQp$y4Ph?t-LrZ`
+16. Scroll down to the bottom of the page and select the `Go` button
+17. Select the `User Accounts` tab on the top naviagtion bar
+18. Find the `cat` user and select `Edit privleges`
+19. Below the top navigation bar, select the `Database` button
+20. Under the `Add privileges on the following database(s):` field, select `soteria_cat` from the menu
+21. Select the `Go` button
+22. In a terminal, navigate to `/xampp/htdocs/soteria_cat_project/cat_frontend`
 23. Start the front-end server
     ```sh
     npm start
