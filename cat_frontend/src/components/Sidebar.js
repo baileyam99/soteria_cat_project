@@ -8,6 +8,7 @@ import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 import '../App.css';
 import logo from '../images/SoteriaImage.png';
+import AuthNav from './auth-nav';
 
 const Nav = styled.div`
   background: #323232;
@@ -51,12 +52,15 @@ const Sidebar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
+      <div className="nav-container mb-3">
         <Nav>
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
           <h1 className="cat"> Case Administration Tool</h1>
+          <AuthNav />
         </Nav>
+        </div>
       </IconContext.Provider>
       <IconContext.Provider value={{ color: '#fff' }}>
         <SidebarNav sidebar={sidebar}>
