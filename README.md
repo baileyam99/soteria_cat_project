@@ -60,8 +60,9 @@ The purpose of the Case Administration Tool is to provide Soteria Digital Forens
 ### Built With
 
 * [React.js](https://reactjs.org/)
+* [XAMPP](https://www.apachefriends.org/index.html)
 * [PHP](https://www.php.net)
-* [PostgreSQL](https://www.postgresql.org/)
+* [MAriaDb](https://mariadb.org/)
 * [Auth0](https://auth0.com)
 
 
@@ -83,6 +84,10 @@ To get a local copy up and running follow these simple example steps.
  * php 
 	```bash
 	sudo apt install php7.4-cli
+	```
+* xampp
+	```
+	Download and install XAMPP control panel from [XAMPP](https://www.apachefriends.org/index.html)
 	```
 
 ### Installation
