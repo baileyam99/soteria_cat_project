@@ -86,9 +86,7 @@ To get a local copy up and running follow these simple example steps.
 	sudo apt install php7.4-cli
 	```
 * xampp
-	```
 	Download and install XAMPP control panel from [XAMPP](https://www.apachefriends.org/index.html)
-	```
 
 ### Installation
 
