@@ -1,6 +1,31 @@
 body {
     min-height: 100%;
+    
 }
+
+input {
+    line-height: 20px;
+    flex: 0 0 200px;
+    margin-left: 10px;
+}
+
+
+#OPCWrapper{
+    
+    float:right;
+    width: 400px;
+    line-height: 26px;
+    margin-bottom: 10px;
+    margin-right:37%;
+    margin-top:15px;
+    display:flex;
+    flex-direction: column;
+}
+
+.ONCInput1{
+    margin-top: 20px;
+}
+
 
 main {
     margin: 0;
@@ -10,7 +35,7 @@ main {
 
 .center {
     float: center;
-    width: 100%;
+    width: 90%;
 }
 
 table, th, td {
@@ -29,4 +54,25 @@ th {
 
 .DetailsButton th {
     background-color: #4290E8;
+}
+
+
+
+#button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    float:right;
+    margin-right:20%;
+}
+
+#label-wrapper {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    border: 1.5px solid #323232;
+    width: 90%;
+    float:right;
+    margin-right:50px;
 }

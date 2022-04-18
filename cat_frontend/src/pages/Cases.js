@@ -213,28 +213,34 @@ class DisplayCaseDetails extends React.Component {
     let details = this.state.list.map((data)=>{
       return (
         <main>
-          <label>Client: {data.clientName}</label><br/>
-          <label>Type: {data.caseType}</label><br/>
-          <label>Description: {data.description}</label><br/>
-          <label>Case Lead: {data.lead}</label><br/>
-          <label>Status: {data.caseStatus}</label><br/>
-          <label>Date Opened: {data.openDate}</label><br/>
-          <label>Date Closed: {data.closeDate}</label><br/>
-          <Link to="/cases/notes">
-            <GeneralButton>View Notes</GeneralButton>
-          </Link>
-          <Link to="/cases/view_evidence">
-            <GeneralButton>View Evidence</GeneralButton>
-          </Link><br/>
-          <Link to="/cases/view_physical_evidence">
-            <GeneralButton>View Physical Evidence</GeneralButton>
-          </Link>
-          <Link to="/cases/edit_case">
-            <GeneralButton>Edit Case</GeneralButton>
-          </Link><br/>
-          <Link to="/cases/case_list">
-            <GeneralButton>View All Cases</GeneralButton>
-          </Link>
+
+          <div id = "label-wrapper">
+            <label>Client: {data.clientName}</label><br/>
+            <label>Type: {data.caseType}</label><br/>
+            <label>Description: {data.description}</label><br/>
+            <label>Case Lead: {data.lead}</label><br/>
+            <label>Status: {data.caseStatus}</label><br/>
+            <label>Date Opened: {data.openDate}</label><br/>
+            <label>Date Closed: {data.closeDate}</label><br/>
+          </div>
+
+          <div id= "button-wrapper">
+            <Link to="/cases/notes">
+              <GeneralButton className='GB1'>View Notes</GeneralButton>
+            </Link>
+            <Link to="/cases/view_evidence">
+              <GeneralButton className='GB2'>View Evidence</GeneralButton>
+            </Link><br/>
+            <Link to="/cases/view_physical_evidence">
+              <GeneralButton className='GB3'>View Physical Evidence</GeneralButton>
+            </Link>
+            <Link to="/cases/edit_case">
+              <GeneralButton className='GB4'>Edit Case</GeneralButton>
+            </Link><br/>
+            <Link to="/cases/case_list">
+              <GeneralButton className='GB5'>View All Cases</GeneralButton>
+            </Link>
+          </div>
         </main>
       )
     })
@@ -304,29 +310,31 @@ class AddCaseForm extends React.Component{
       <main>
       <h1>Open New Case</h1>
       <body>
-        <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php?' method='post' id='add_product_form'>
-          <label>Codename:</label>
-          <input type='text' name='codename'></input><br/>
+          <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php?' method='post' id='add_product_form'>
+            
+              <label className='ONCLabel1'>Codename:</label>
+              <input className='ONCInput1' type='text' name='codename'></input><br/>
 
-          <label>Client Name:</label>
-          <input type='text' name='clientname'></input><br/>
+              <label className='ONCLabel2'>Client Name:</label>
+              <input className='ONCInput1' type='text' name='clientname'></input><br/>
+            <div id = "OPCWrapper" >
+              <label className='ONCLabel3'>Case Type:</label>
+              <select name='casetype'>
+                {types}
+              </select><br/>
 
-          <label>Case Type:</label>
-          <select name='casetype'>
-            {types}
-          </select><br/>
+              <label className='ONCLabel4'>Case Lead:</label>
+              <select name='lead'>
+                {leads}
+              </select><br/>
 
-          <label>Case Lead:</label>
-          <select name='lead'>
-            {leads}
-          </select><br/>
+              <label className='ONCLabel5'>Description: </label>
+              <textarea className = 'ONCDescription' id='description' name='description' rows='4' cols='50'></textarea><br/><br/>
 
-          <label>Description: </label>
-          <textarea id='description' name='description' rows='4' cols='50'></textarea><br/><br/>
-
-          <label>&nbsp;</label>
-          <FormSubmitButton type='submit' name='action' value='opencase'>Open Case</FormSubmitButton><br/>
-        </form>
+              <label className='ONCLabel6'>&nbsp;</label>
+              <FormSubmitButton type='submit' name='action' value='opencase'>Open Case</FormSubmitButton><br/>
+            </div>
+          </form>
       </body>
     </main>
     )
