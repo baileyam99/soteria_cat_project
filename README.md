@@ -112,10 +112,9 @@ To get a local copy up and running follow these simple example steps.
 9. Select the 'Go' button at the bottom right corner
 10. Select the 'User Accounts' tab on the top naviagtion bar
 11. Select the 'Add user account' link
-12. Under the 'User name' field, type: 
-    ```cat```
+12. Under the 'User name' field, type: `cat`
 14. Under the 'Host name' field, select: 'Local' from the dropdown menu
-15. Under the 'Password' field, type: ```7PuQp$y4Ph?t-LrZ```
+15. Under the 'Password' field, type: `7PuQp$y4Ph?t-LrZ`
 16. Scroll down to the bottom of the page and select the 'Go' button
 17. Select the 'User Accounts' tab on the top naviagtion bar
 18. Find the 'cat' user and select 'Edit privleges'
