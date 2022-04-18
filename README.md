@@ -112,17 +112,18 @@ To get a local copy up and running follow these simple example steps.
 9. Select the 'Go' button at the bottom right corner
 10. Select the 'User Accounts' tab on the top naviagtion bar
 11. Select the 'Add user account' link
-12. Under the 'User name' field, type: ```cat```
-13. Under the 'Host name' field, select: 'Local' from the dropdown menu
-14. Under the 'Password' field, type: ```7PuQp$y4Ph?t-LrZ```
-15. Scroll down to the bottom of the page and select the 'Go' button
-16. Select the 'User Accounts' tab on the top naviagtion bar
-17. Find the 'cat' user and select 'Edit privleges'
-18. Below the top navigation bar, select the 'Database' button
-19. Under the 'Add privileges on the following database(s):' field, select 'soteria_cat' from the menu
-20. Select the 'Go' button
-21. In a terminal, navigate to /xampp/htdocs/soteria_cat_project/cat_frontend
-22. Start the front-end server
+12. Under the 'User name' field, type: 
+    ```cat```
+14. Under the 'Host name' field, select: 'Local' from the dropdown menu
+15. Under the 'Password' field, type: ```7PuQp$y4Ph?t-LrZ```
+16. Scroll down to the bottom of the page and select the 'Go' button
+17. Select the 'User Accounts' tab on the top naviagtion bar
+18. Find the 'cat' user and select 'Edit privleges'
+19. Below the top navigation bar, select the 'Database' button
+20. Under the 'Add privileges on the following database(s):' field, select 'soteria_cat' from the menu
+21. Select the 'Go' button
+22. In a terminal, navigate to /xampp/htdocs/soteria_cat_project/cat_frontend
+23. Start the front-end server
     ```sh
     npm start
     ```
