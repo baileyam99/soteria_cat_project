@@ -1,18 +1,11 @@
 <?php
 
-
-function viewPhysEvidence(string $codename){
-    global $db;
-    $query = "SELECT * FROM physicalinventory WHERE codename = :codename";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':codename', $codename);
-    $statement->execute();
-    $evidenceList = $statement->fetchAll();
-    $statement->closeCursor();
-    return $evidenceList;
+function viewPhysEvidence($codename) {
+    global $db2;
+    $query = "SELECT * FROM physicalinventory WHERE codename = " . "'" . $codename . "'";
+    $ev = mysqli_query($db2, $query);
+    return $ev;
 }
-
-
 
 
 function addPhysEvidence(string $codename, string $identifier, string $description, string $disposition, string $collector)

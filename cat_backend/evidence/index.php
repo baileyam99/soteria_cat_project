@@ -11,6 +11,24 @@ if ($action === NULL) {
     }
 }
 
+if($action == 'getevi'){
+    $codename = filter_input(INPUT_POST, 'codename');
+    $result = viewEvidence($codename);
+
+    $json_array = array();
+    while ($row = $result->fetch_assoc()) {
+        $json_array[] = $row;
+    }
+    $json = json_encode($json_array);
+    file_put_contents("evidence.json", $json);
+    header("Location: http://localhost:3000/cases/view_evidence?codename=$codename");
+}
+
+if ($action == 'viewevi') {
+    header('Content-type: application/json');
+    include('evidence.json');
+}
+
 if ($action === 'Return to List'){
     $codename = filter_input(INPUT_POST, 'codename');
 

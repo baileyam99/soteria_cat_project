@@ -12,6 +12,26 @@ if ($action === NULL) {
     }
 }
 
+// Get Physical Evidence
+if($action == 'getevi'){
+    $codename = filter_input(INPUT_POST, 'codename');
+    $result = viewPhysEvidence($codename);
+
+    $json_array = array();
+    while ($row = $result->fetch_assoc()) {
+        $json_array[] = $row;
+    }
+    $json = json_encode($json_array);
+    file_put_contents("phyevidence.json", $json);
+    header("Location: http://localhost:3000/cases/view_physical_evidence?codename=$codename");
+}
+
+// View Physical Evidence
+if ($action == 'viewevi') {
+    header('Content-type: application/json');
+    include('phyevidence.json');
+}
+
 if ($action === 'Return to List'){
     $codename = filter_input(INPUT_POST, 'codename');
 

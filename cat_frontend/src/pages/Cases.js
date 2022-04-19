@@ -27,6 +27,7 @@ class DisplayCaseTable extends Component{
           })
       })
   }
+
   search(){
     fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=viewsearch")
     .then(
@@ -229,8 +230,8 @@ class DisplayCaseDetails extends React.Component {
             <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
               <input type="hidden" name="codename" value={data.codename}></input>
               <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
-              <GeneralButton type='submit' name='action' value='getevi'>View Evidence</GeneralButton>
-              <GeneralButton type='submit' name='action' value='getphyevi'>View Physical Evidence</GeneralButton>
+              <GeneralButton type='submit' name='action' value='evi'>View Evidence</GeneralButton>
+              <GeneralButton type='submit' name='action' value='phys'>View Physical Evidence</GeneralButton>
               <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
               <Link to="/cases/case_list">
                 <GeneralButton>View All Cases</GeneralButton>

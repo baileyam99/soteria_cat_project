@@ -71,7 +71,7 @@ footer p {
 
 h1 {
     text-align: center;
-    font-size: 150%;
+    font-size: 175%;
     margin: 0;
     padding: .5em 0 .25em;
 }
@@ -141,8 +141,9 @@ br {
     clear: left;
 }
 textarea {
+    border: 1.5px solid black;
+    font-size: 112%;
     font-family: 'Source Sans Pro';
-    font-size: 80%;
 }
 
 .center {

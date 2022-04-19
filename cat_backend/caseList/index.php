@@ -25,9 +25,7 @@ if ($action == 'view'){
 // get details of case
 if ($action == 'Details'){
     $codename= filter_input(INPUT_POST, 'codename');
-    global $db2;
-    $query = "SELECT * FROM caselist WHERE codename = " . "'" . $codename . "'";
-    $case = mysqli_query($db2, $query);
+    $case = selectCase($codename);
     
     $json_array = array();
     while ($row = $case->fetch_assoc()) {
@@ -67,9 +65,7 @@ if ($action === 'viewsearch'){
 
 // get case types
 if ($action == 'types') {
-    global $db2;
-    $query = "SELECT caseType FROM casetypes";
-    $types = mysqli_query($db2, $query);
+    $types = getTypes();
 
     $json_array = array();
     while ($row = $types->fetch_assoc()) {
@@ -81,9 +77,7 @@ if ($action == 'types') {
 
 // get all usernames
 if ($action == 'usernames') {
-    global $db2;
-    $query = "SELECT username FROM users";
-    $usernames = mysqli_query($db2, $query);
+    $usernames = getUsernames();
 
     $json_array = array();
     while ($row = $usernames->fetch_assoc()) {
@@ -115,38 +109,30 @@ if ($action == 'opencase'){
     }
 }
 
-if($action == 'getevi'){
-    $codename = filter_input(INPUT_POST, 'codename');
-
-    global $db2;
-    $query = "SELECT * FROM notes WHERE codename = " . "'" . $codename . "'" . " ORDER BY submitDate DESC";
-    $result = mysqli_query($db2, $query);
-
-    $json_array = array();
-    while ($row = $result->fetch_assoc()) {
-        $json_array[] = $row;
-    }
-    $json = json_encode($json_array);
-    file_put_contents("notes.json", $json);
-    header("Location: http://localhost:3000/cases/notes?codename=$codename");
-}
-
 // view case evidence
-if ($action === 'viewevi'){
+if ($action === 'evi'){
     $codename = filter_input(INPUT_POST, 'codename');
 
     if ($codename != false) {
-        header("Location: ../evidence/viewEvidence.php?codename=$codename");
+        header("Location: ../evidence/index.php?action=getevi&codename=$codename");
+    }
+    else {
+        $error = "Error: Codename is $codename!";
+        include('../errors/error.php');
     }
 }
 
 // view case physical inventory
-if ($action === 'View Physical Inventory'){
+if ($action === 'phys'){
     $codename = filter_input(INPUT_POST, 'codename');
 
     if ($codename != false) {
-        header("Location: ../physInv/viewPhysEvidence.php?codename=$codename");
-     }
+        header("Location: ../physInv/index.php?action=getevi&codename=$codename");
+    }
+    else {
+        $error = "Error: Codename is $codename!";
+        include('../errors/error.php');
+    }
 }
 
 // get a case's notes
@@ -163,9 +149,7 @@ if($action == 'getnotes'){
         $codename = $codenameGet;
     }
 
-    global $db2;
-    $query = "SELECT * FROM notes WHERE codename = " . "'" . $codename . "'" . " ORDER BY submitDate DESC";
-    $result = mysqli_query($db2, $query);
+    $result = getNotes($codename);
 
     $json_array = array();
     while ($row = $result->fetch_assoc()) {
@@ -176,6 +160,7 @@ if($action == 'getnotes'){
     header("Location: http://localhost:3000/cases/notes?codename=$codename");
 }
 
+// view case notes
 if ($action == 'viewnotes') {
     header('Content-type: application/json');
     include('notes.json');

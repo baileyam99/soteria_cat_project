@@ -1,17 +1,11 @@
 <?php
 
-
-function viewEvidence(string $codename){
-    global $db;
-    $query = "SELECT * FROM evidencelog WHERE codename = :codename";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':codename', $codename);
-    $statement->execute();
-    $evidenceList = $statement->fetchAll();
-    $statement->closeCursor();
-    return $evidenceList;
+function viewEvidence($codename) {
+    global $db2;
+    $query = "SELECT * FROM evidencelog WHERE codename = " . "'" . $codename . "'";
+    $ev = mysqli_query($db2, $query);
+    return $ev;
 }
-
 
 
 

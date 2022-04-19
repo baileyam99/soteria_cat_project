@@ -34,16 +34,11 @@ function selectCase($codename) {
     return $case;
 }
 
-function getNotes(string $codename){
-    global $db;
-    $query = "SELECT * FROM notes WHERE codename= :codename ORDER BY submitDate";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':codename', $codename);
-    $statement->execute();
-    $notes = $statement->fetchAll();
-    $statement->closeCursor();
-
-    return $notes;
+function getNotes($codename){
+    global $db2;
+    $query = "SELECT * FROM notes WHERE codename = " . "'" . $codename . "'" . " ORDER BY submitDate DESC";
+    $result = mysqli_query($db2, $query);
+    return $result;
 }
 
 function addNote(string $codename, string $username, string $date, string $body){
@@ -66,5 +61,19 @@ function search_case($param, $srch){
     $query = "SELECT * FROM caselist WHERE " . $param . " = '" . $srch . "'";
     $result = mysqli_query($db2, $query);
     return $result;
+}
+
+function getTypes() {
+    global $db2;
+    $query = "SELECT caseType FROM casetypes";
+    $types = mysqli_query($db2, $query);
+    return $types;
+}
+
+function getUsernames() {
+    global $db2;
+    $query = "SELECT username FROM users";
+    $usernames = mysqli_query($db2, $query);
+    return $usernames;
 }
 ?>
