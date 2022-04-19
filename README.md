@@ -62,7 +62,7 @@ The purpose of the Case Administration Tool is to provide Soteria Digital Forens
 * [React.js](https://reactjs.org/)
 * [XAMPP](https://www.apachefriends.org/index.html)
 * [PHP](https://www.php.net)
-* [MAriaDb](https://mariadb.org/)
+* [MariaDb](https://mariadb.org/)
 * [Auth0](https://auth0.com)
 
 
