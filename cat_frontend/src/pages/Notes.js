@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
-import { FormSubmitButton, DetailsButton, GeneralButton } from '../components/Buttons';
+import { AddButton, GeneralButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
 import './Cases.css';
+
+// No Results
+export const NoResults = () => {
+  return (
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  );
+};
 
 // View & Add Notes
 class NotesTable extends Component{
@@ -32,7 +44,7 @@ class NotesTable extends Component{
   }
 
   callAPI2(){
-    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewnotes")
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdetails")
     .then(
         (response) => response.json()
     ).then((data)=>{
@@ -54,14 +66,25 @@ class NotesTable extends Component{
       </tr>
       )
     })
-
+    if (this.state.list.codename === null) {
+      tb_data = ()=>{
+        return(
+        <tr>
+          <td>NONE</td>
+          <td>NONE</td>
+          <td>NONE</td>
+          <td>NONE</td>
+        </tr>
+        )
+      }
+    }
     let codename = this.state.list2.map((data)=>{
       return(
         <div id= "button-wrapper">
           <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
-            <GeneralButton type='submit' name='action' value='getevi'>View Evidence</GeneralButton>
-            <GeneralButton type='submit' name='action' value='getphyevi'>View Physical Evidence</GeneralButton>
+            <GeneralButton type='submit' name='action' value='evi'>View Evidence</GeneralButton>
+            <GeneralButton type='submit' name='action' value='phys'>View Physical Evidence</GeneralButton>
             <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
             <GeneralButton type='submit' name='action' value='Details'>Details</GeneralButton>
           </form>
@@ -76,17 +99,17 @@ class NotesTable extends Component{
       return(
         <div className="container">
           <form action = 'http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'> 
-            <textarea id="body" name="body" rows="10" cols="100">Type Your Note Here...</textarea> <br/>
+            <textarea name="body" rows="6" cols="159">Type Your Note Here...</textarea> <br/>
             <input type ="hidden" name ="codename" value={data.codename} />
             <input type ="hidden" name ="username" value="tgilchrist" />
-            <FormSubmitButton type='submit' name='action' value='addnote'>Add Note</FormSubmitButton><br/>
+            <AddButton type='submit' name='action' value='addnote'>Add Note</AddButton><br/>
           </form>
         </div>
       )
     })
     return(
       <main>
-        {codename[0]}
+        {codename}
 
         <div className="container">
           <table className="center">
@@ -104,7 +127,7 @@ class NotesTable extends Component{
           </table>
         </div>
 
-        {addnote[0]}
+        {addnote}
       </main>
     )
   }

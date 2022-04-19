@@ -42,10 +42,12 @@ main {
 }
 
 table, th, td {
+    text-align: center;
     border: 1.5px solid #323232;
 }
 
 th {
+    font-size: 18px;
     font-weight: lighter;
     color: white;
     background-color: #4290E8;
@@ -63,6 +65,14 @@ th {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+    float:right;
+    margin-right:20%;
+    margin-bottom: 15px;
+}
+#button-wrapper2 {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
     float:right;
     margin-right:20%;
     margin-bottom: 15px;
