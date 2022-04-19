@@ -1,13 +1,15 @@
 import React from 'react';
 import './Home.css';
+import AuthenticationStatus from '../auth/AuthenticationStatus';
+import User from '../auth/User';
 
 export const Home = () => {
     return (
       <main>
         
         <h1>Home</h1>
-        <h2>Sorry, this page is currently under construction.</h2>
-        <p>We'll finish it as quickly as we can. Thanks!</p>
+        <p>Authentication Status: <AuthenticationStatus /></p>
+        <p>User: <User /></p>
 
       </main>
 

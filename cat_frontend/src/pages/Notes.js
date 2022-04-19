@@ -1,3 +1,5 @@
+// View Notes
+
 // Add New Note
 
 // Notes Page

@@ -164,6 +164,7 @@ class SearchCase extends Component{
                   <th>Lead</th>
                   <th>Case Status</th> 
                   <th>Open Date</th> 
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
