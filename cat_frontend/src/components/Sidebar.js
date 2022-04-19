@@ -52,7 +52,6 @@ const Sidebar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-      <div className="nav-container mb-3">
         <Nav>
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
@@ -60,7 +59,6 @@ const Sidebar = () => {
           <h1 className="cat"> Case Administration Tool</h1>
           <AuthNav />
         </Nav>
-        </div>
       </IconContext.Provider>
       <IconContext.Provider value={{ color: '#fff' }}>
         <SidebarNav sidebar={sidebar}>

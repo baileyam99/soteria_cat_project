@@ -115,8 +115,24 @@ if ($action == 'opencase'){
     }
 }
 
+if($action == 'getevi'){
+    $codename = filter_input(INPUT_POST, 'codename');
+
+    global $db2;
+    $query = "SELECT * FROM notes WHERE codename = " . "'" . $codename . "'" . " ORDER BY submitDate DESC";
+    $result = mysqli_query($db2, $query);
+
+    $json_array = array();
+    while ($row = $result->fetch_assoc()) {
+        $json_array[] = $row;
+    }
+    $json = json_encode($json_array);
+    file_put_contents("notes.json", $json);
+    header("Location: http://localhost:3000/cases/notes?codename=$codename");
+}
+
 // view case evidence
-if ($action === 'viewevidence'){
+if ($action === 'viewevi'){
     $codename = filter_input(INPUT_POST, 'codename');
 
     if ($codename != false) {
@@ -133,20 +149,46 @@ if ($action === 'View Physical Inventory'){
      }
 }
 
-// view a case's notes
-if($action == 'View Notes'){
-    $codename = filter_input(INPUT_POST, 'codename');
-    header("Location: notes.php?codename=$codename");
+// get a case's notes
+if($action == 'getnotes'){
+    $codenameGet = filter_input(INPUT_GET, 'codename');
+    $codenamePost = filter_input(INPUT_POST, 'codename');
+    $codename;
+
+    if ($codenameGet == null || $codenameGet == false) {
+        $codename = $codenamePost;
+    }
+
+    if ($codenamePost == null || $codenamePost == false) {
+        $codename = $codenameGet;
+    }
+
+    global $db2;
+    $query = "SELECT * FROM notes WHERE codename = " . "'" . $codename . "'" . " ORDER BY submitDate DESC";
+    $result = mysqli_query($db2, $query);
+
+    $json_array = array();
+    while ($row = $result->fetch_assoc()) {
+        $json_array[] = $row;
+    }
+    $json = json_encode($json_array);
+    file_put_contents("notes.json", $json);
+    header("Location: http://localhost:3000/cases/notes?codename=$codename");
+}
+
+if ($action == 'viewnotes') {
+    header('Content-type: application/json');
+    include('notes.json');
 }
 
 // add a new note
-if($action == 'Add Note'){
+if($action == 'addnote'){
     $codename = filter_input(INPUT_POST, 'codename');
     $username = filter_input(INPUT_POST, 'username');
     $body = filter_input(INPUT_POST, 'body');
     $date = date('Y-m-d H:i:s');
     addNote($codename, $username, $date, $body);
-    header("Location: notes.php?codename=$codename");
+    header("Location: http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=getnotes&codename=$codename");
     
 }
 

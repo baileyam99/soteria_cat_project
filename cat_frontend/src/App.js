@@ -12,13 +12,16 @@ import { Home } from './pages/Home';
 import { NotesPage } from './pages/Notes';
 import { ViewEvidencePage } from './pages/ViewEvidence';
 import { ViewPhysicalEvidencePage } from './pages/ViewPhysicalEvidence';
+import { LoginPage } from './pages/Login';
+
 
 function App() {
+
   return (
     <Router>
       <Sidebar />
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route path='/' exact component={LoginPage} />
         <Route path='/home' exact component={Home} />
         <Route path='/admin/add_user' exact component={Adminadd} />
         <Route path='/admin/edit_user' exact component={Adminedit} />

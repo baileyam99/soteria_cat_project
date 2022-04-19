@@ -136,11 +136,11 @@ class SearchCase extends Component{
           <form className = "DetailsButton" action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <DetailsButton type='submit' name='action' value='Details'>Details</DetailsButton>
-            </form>
-            </td>
-            </tr>
-            )
-          })
+          </form>
+        </td>
+      </tr>
+      )
+    })
     return(
       <main>
         <div className="container">
@@ -226,21 +226,16 @@ class DisplayCaseDetails extends React.Component {
           </div>
 
           <div id= "button-wrapper">
-            <Link to="/cases/notes">
-              <GeneralButton className='GB1'>View Notes</GeneralButton>
-            </Link>
-            <Link to="/cases/view_evidence">
-              <GeneralButton className='GB2'>View Evidence</GeneralButton>
-            </Link><br/>
-            <Link to="/cases/view_physical_evidence">
-              <GeneralButton className='GB3'>View Physical Evidence</GeneralButton>
-            </Link>
-            <Link to="/cases/edit_case">
-              <GeneralButton className='GB4'>Edit Case</GeneralButton>
-            </Link><br/>
-            <Link to="/cases/case_list">
-              <GeneralButton className='GB5'>View All Cases</GeneralButton>
-            </Link>
+            <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
+              <input type="hidden" name="codename" value={data.codename}></input>
+              <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
+              <GeneralButton type='submit' name='action' value='getevi'>View Evidence</GeneralButton>
+              <GeneralButton type='submit' name='action' value='getphyevi'>View Physical Evidence</GeneralButton>
+              <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
+              <Link to="/cases/case_list">
+                <GeneralButton>View All Cases</GeneralButton>
+              </Link>
+            </form>
           </div>
         </main>
       )
