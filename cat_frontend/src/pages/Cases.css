@@ -26,6 +26,9 @@ input {
     margin-top: 20px;
 }
 
+.container {
+    margin-bottom: 40px;
+}
 
 main {
     margin: 0;
@@ -56,14 +59,13 @@ th {
     background-color: #4290E8;
 }
 
-
-
 #button-wrapper {
     display: flex;
     justify-content: center;
     margin-top: 15px;
     float:right;
     margin-right:20%;
+    margin-bottom: 15px;
 }
 
 #label-wrapper {
