@@ -11,4 +11,5 @@ const AuthenticationButton = () => {
   return isAuthenticated ? <LogoutButton /> : <LoginButton />;
 };
 
+
 export default AuthenticationButton;

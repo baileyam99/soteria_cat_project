@@ -30,7 +30,7 @@ input {
 main {
     margin: 0;
     height:800px;
-    padding: .5em 2em;
+    padding: .5em 2em .25em;
 }
 
 .center {
