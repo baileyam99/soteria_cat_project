@@ -14,7 +14,7 @@ if ($action === NULL) {
 
 // Get Physical Evidence
 if($action == 'getevi'){
-    $codename = filter_input(INPUT_POST, 'codename');
+    $codename = filter_input(INPUT_GET, 'codename');
     $result = viewPhysEvidence($codename);
 
     $json_array = array();

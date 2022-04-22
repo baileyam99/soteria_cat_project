@@ -12,7 +12,7 @@ if ($action === NULL) {
 }
 
 if($action == 'getevi'){
-    $codename = filter_input(INPUT_POST, 'codename');
+    $codename = filter_input(INPUT_GET, 'codename');
     $result = viewEvidence($codename);
 
     $json_array = array();
@@ -42,7 +42,7 @@ if ($action === 'Collect Evidence'){
     header("Location: addEvidence.php?codename=$codename");
 }
 
-if ($action === 'Add Evidence'){
+if ($action === 'add'){
     $codename = filter_input(INPUT_POST, 'codename');
     $filename = filter_input(INPUT_POST, 'filename');
     $descriptor = filter_input(INPUT_POST, 'descriptor');
@@ -57,7 +57,7 @@ if ($action === 'Add Evidence'){
     // $modDate= $date->format('F j, Y, g:i a');
 
     addEvidence($codename, $filename, $descriptor, $size, $modDate, $hash, $username);
-    header("Location: viewEvidence.php?codename=$codename");
+    header("Location: http://localhost/soteria_cat_project/cat_backend/evidence/index.php?action=getevi&codename=$codename");
 }
 
 if ($action === 'Edit'){
@@ -96,22 +96,3 @@ if ($action === 'Return to Details'){
     $codename = filter_input(INPUT_POST, 'codename');
     header("Location: ../caseList/viewCaseDetails.php?codename=$codename");
 }
-
-?>
-
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edit this template
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
