@@ -57,7 +57,10 @@ const Sidebar = () => {
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
           <h1 className="cat"> Case Administration Tool</h1>
-          <AuthNav />
+          <div className='AuthNavButton'>
+          <AuthNav className='HeaderButton'/>
+          </div>
+          
         </Nav>
       </IconContext.Provider>
       <IconContext.Provider value={{ color: '#fff' }}>
