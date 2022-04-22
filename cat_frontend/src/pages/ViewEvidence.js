@@ -86,13 +86,12 @@ callAPI2(){
       )
     })
 
-    let addnew = this.state.list2.map((data)=>{
+    let addnew = this.state.list.map(()=>{
       return (
         <div id= "button-wrapper2">
-          <form action='http://localhost/soteria_cat_project/cat_backend/physInv/index.php' method='post'>
-            <input type="hidden" name="codename" value={data.codename}></input>
-            <AddButton type='submit' name='action' value='add'>Collect Evidence</AddButton>
-          </form>
+          <Link to="/cases/view_evidence/collect">
+            <AddButton>Collect Evidence</AddButton>
+          </Link>
         </div>
       )
     })
@@ -100,7 +99,7 @@ callAPI2(){
     return(
       <main>
         {codename}
-        {addnew}
+        {addnew[0]}
         <div className="container">
           <table className="center">
             <thead>

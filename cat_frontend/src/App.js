@@ -11,6 +11,7 @@ import { Footer } from './pages/Footer';
 import { Home } from './pages/Home';
 import { NotesPage } from './pages/Notes';
 import { ViewEvidencePage } from './pages/ViewEvidence';
+import { AddEvidencePage } from './pages/AddEvidence';
 import { ViewPhysicalEvidencePage } from './pages/ViewPhysicalEvidence';
 import { LoginPage } from './pages/Login';
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/cases/edit_case' exact component={EditCasePage} />
         <Route path='/cases/notes' exact component={NotesPage} />
         <Route path='/cases/view_evidence' exact component={ViewEvidencePage} />
+        <Route path='/cases/view_evidence/collect' exact component={AddEvidencePage} />
         <Route path='/cases/view_physical_evidence' exact component={ViewPhysicalEvidencePage} />
         <Route path='/cases/case_list' exact component={CaseList} />
         <Route path='/cases/case_list/search' exact component={SearchCasePage} />
