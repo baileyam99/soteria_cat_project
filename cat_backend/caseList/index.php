@@ -31,8 +31,10 @@ if ($action == 'Details'){
     while ($row = $case->fetch_assoc()) {
         $json_array[] = $row;
     }
+    header('Content-type: application/json');
     $json = json_encode($json_array);
     file_put_contents("details.json", $json);
+    //include("http://localhost:3000/cases/case_details?codename=$codename");
     header("Location: http://localhost:3000/cases/case_details?codename=$codename");
 }
 
@@ -40,6 +42,17 @@ if ($action == 'Details'){
 if ($action == 'viewdetails') {
     header('Content-type: application/json');
     include('details.json');
+}
+
+// edit case details
+if ($action === 'editdetails'){
+    $codename = filter_input(INPUT_POST, 'codename');
+    $clientName = filter_input(INPUT_POST, 'clientname');
+    $caseType = filter_input(INPUT_POST, 'casetype');
+    $lead = filter_input(INPUT_POST, 'lead');
+    $description = filter_input(INPUT_POST, 'description');
+    updateCase($codename, $clientName, $caseType, $lead, $description);
+    header("Location: http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=Details&codename=$codename");
 }
 
 // search for a case
@@ -89,7 +102,7 @@ if ($action == 'usernames') {
 
 // open new case
 if ($action == 'opencase'){
-    // Get the product data
+    // Get the case data
     $codename = filter_input(INPUT_POST, 'codename');
     $clientName = filter_input(INPUT_POST, 'clientname');
     $casetype = filter_input(INPUT_POST, 'casetype');

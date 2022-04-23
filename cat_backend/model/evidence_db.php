@@ -7,8 +7,6 @@ function viewEvidence($codename) {
     return $ev;
 }
 
-
-
 function addEvidence(string $codename, string $filename, string $descriptor, string $size, string $modDate, string $hash, string $collector)
 {           
         global $db; 

@@ -86,7 +86,7 @@ callAPI2(){
       )
     })
 
-    let addnew = this.state.list.map(()=>{
+    let addnew = this.state.list2.map(()=>{
       return (
         <div id= "button-wrapper2">
           <Link to="/cases/view_evidence/collect">
@@ -99,7 +99,7 @@ callAPI2(){
     return(
       <main>
         {codename}
-        {addnew[0]}
+        {addnew}
         <div className="container">
           <table className="center">
             <thead>

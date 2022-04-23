@@ -27,6 +27,24 @@ function openCase(string $codename, string $clientName, string $caseType, string
     
 }
 
+function updateCase(string $codename, string $clientName, string $caseType, string $lead, string $description)
+{           
+        global $db; 
+        $query = "UPDATE caseList 
+        SET clientName = $clientName,
+            caseType = $caseType,
+            description = $description,
+            lead = $lead
+        WHERE codename = $codename";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':codename', $codename);
+        $statement->bindValue(':clientname', $clientName);
+        $statement->bindValue(':description', $description);
+        $statement->bindValue(':lead', $lead);
+        $statement->execute();
+        $statement->closeCursor();
+}
+
 function selectCase($codename) {
     global $db2;
     $query = "SELECT * FROM caselist WHERE codename = " . "'" . $codename . "'";

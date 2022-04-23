@@ -60,7 +60,7 @@ if ($action === 'add'){
     header("Location: http://localhost/soteria_cat_project/cat_backend/evidence/index.php?action=getevi&codename=$codename");
 }
 
-if ($action === 'Edit'){
+if ($action === 'edit'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
     $fileName = filter_input(INPUT_POST, 'fileName');
@@ -72,7 +72,7 @@ if ($action === 'Edit'){
     include('editEvidence.php');
 }
 
-if ($action === 'Update'){
+if ($action === 'update'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
     $fileName = filter_input(INPUT_POST, 'filename');
@@ -90,9 +90,4 @@ if ($action === 'Delete'){
     $idNum = filter_input(INPUT_POST, 'idNum');
     deleteEvidence($codename, $idNum);
     header("Location: viewEvidence.php?codename=$codename");
-}
-
-if ($action === 'Return to Details'){
-    $codename = filter_input(INPUT_POST, 'codename');
-    header("Location: ../caseList/viewCaseDetails.php?codename=$codename");
 }

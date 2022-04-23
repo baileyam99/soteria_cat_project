@@ -55,8 +55,8 @@ callAPI2(){
         </tr>
       )
     })
-    if (this.state.list.codename === null) {
-      tb_data = ()=>{
+    if (this.state.list2.codename === null) {
+      tb_data = this.state.list2.map(()=>{
         return(
         <tr>
           <td>NONE</td>
@@ -67,7 +67,7 @@ callAPI2(){
           <td>NONE</td>
         </tr>
         )
-      }
+      })
     }
 
     let codename = this.state.list2.map((data)=>{
@@ -87,13 +87,12 @@ callAPI2(){
       )
     })
 
-    let newcase = this.state.list2.map((data)=>{
+    let addnew = this.state.list2.map(()=>{
       return (
         <div id= "button-wrapper2">
-          <form action='http://localhost/soteria_cat_project/cat_backend/phyInv/index.php' method='post'>
-            <input type="hidden" name="codename" value={data.codename}></input>
-            <AddButton type='submit' name='action' value='add'>Collect Evidence</AddButton>
-          </form>
+          <Link to="/cases/view_physical_evidence/collect">
+            <AddButton>Collect Evidence</AddButton>
+          </Link>
         </div>
       )
     })
@@ -101,7 +100,7 @@ callAPI2(){
     return(
       <main>
         {codename}
-        {newcase}
+        {addnew}
 
         <div className="container">
           <table className="center">
