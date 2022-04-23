@@ -66,18 +66,7 @@ class NotesTable extends Component{
       </tr>
       )
     })
-    if (this.state.list.codename === null) {
-      tb_data = ()=>{
-        return(
-        <tr>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-        </tr>
-        )
-      }
-    }
+    
     let codename = this.state.list2.map((data)=>{
       return(
         <div id= "button-wrapper">

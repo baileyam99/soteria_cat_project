@@ -45,7 +45,7 @@ if ($action === 'Intake Physical Evidence'){
     header("Location: addPhysEvidence.php?codename=$codename");
 }
 
-if ($action === 'Add Physical Evidence'){
+if ($action === 'add'){
     $codename = filter_input(INPUT_POST, 'codename');
     $identifier = filter_input(INPUT_POST, 'identifier');
     $description = filter_input(INPUT_POST, 'description');
@@ -58,7 +58,7 @@ if ($action === 'Add Physical Evidence'){
     // $modDate= $date->format('F j, Y, g:i a');
 
     addPhysEvidence($codename, $identifier, $description, $disposition, $username);
-    header("Location: viewPhysEvidence.php?codename=$codename");
+    header("Location: http://localhost/soteria_cat_project/cat_backend/physInv/index.php?action=getevi&codename=$codename");
 }
 
 if ($action === 'Edit'){

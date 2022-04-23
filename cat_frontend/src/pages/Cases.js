@@ -187,7 +187,8 @@ class DisplayCaseDetails extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        list:[]
+        list:[],
+        codename: null
     }
 
     this.callAPI = this.callAPI.bind(this)
@@ -195,7 +196,7 @@ class DisplayCaseDetails extends React.Component {
   }
 
   callAPI(){
-    fetch("http://localhost/soteria_cat_project/cat_backend/caseList/index.php?action=viewdetails")
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdegit tails")
     .then(
       (data) => data.json()
     ).then((data)=>{
@@ -339,6 +340,89 @@ class AddCaseForm extends React.Component{
 };
 
 // Edit Case
+class EditCaseForm extends React.Component{
+
+  constructor(props){
+      super(props)
+      this.state = {
+          list:[],
+          list2:[]
+      }
+
+      this.callAPI = this.callAPI.bind(this)
+      this.callAPI2 = this.callAPI2.bind(this)
+      this.callAPI();
+      this.callAPI2();
+  }
+
+  callAPI(){
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=types")
+    .then(
+        (response) => response.json()
+    ).then((data)=>{
+        console.log(data)
+        this.setState({
+           list:data
+        })
+    })
+  }
+
+  callAPI2(){
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=usernames")
+    .then(
+        (response) => response.json()
+    ).then((data2)=>{
+        console.log(data2)
+        this.setState({
+           list2:data2
+        })
+    })
+  }
+
+  render(){
+    let types = this.state.list.map((data)=>{
+      return(
+        <option value={data.caseType}>{data.caseType}</option>
+      )
+    })
+    let leads = this.state.list2.map((data2)=>{
+      return(
+        <option value={data2.username}>{data2.username}</option>
+      )
+    })
+    return (
+      <main>
+      <h1>Edit Case</h1>
+      <body>
+          <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php?' method='post' id='add_product_form'>
+            
+              <label className='ONCLabel1'>{}</label><br/>
+
+              <label className='ONCLabel2'>Client Name:</label>
+              <input className='ONCInput1' type='text' name='clientname'></input><br/>
+            <div id = "OPCWrapper" >
+              <label className='ONCLabel3'>Case Type:</label>
+              <select name='casetype'>
+                {types}
+              </select><br/>
+
+              <label className='ONCLabel4'>Case Lead:</label>
+              <select name='lead'>
+                {leads}
+              </select><br/>
+
+              <label className='ONCLabel5'>Description: </label>
+              <textarea className = 'ONCDescription' id='description' name='description' rows='4' cols='50'></textarea><br/><br/>
+
+              <label className='ONCLabel6'>&nbsp;</label>
+              <FormSubmitButton type='submit' name='action' value='opencase'>Open Case</FormSubmitButton><br/>
+            </div>
+          </form>
+      </body>
+    </main>
+    )
+  }
+};
 
 // Edit Case Page
 export const EditCasePage = () => {
