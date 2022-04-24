@@ -23,10 +23,10 @@ $statement2->closeCursor();
               id="add_product_form">
 
             <label>Codename:</label>
-            <input type="text" name="codename" value = <?php echo $codename; ?>><br>
+            <input type="text" name="codename" value = "<?php echo $codename; ?>"><br>
 
             <label>Client Name:</label>
-            <input type="text" name="clientname" value = <?php echo $clientName; ?>><br>
+            <input type="text" name="clientname" value = "<?php echo $clientName; ?>"><br>
 
             <label>Case Type:</label>
             <select name="casetype">
