@@ -1,0 +1,10 @@
+# VS code config files
+/.vscode
+
+# DS files 
+**/.DS_Store
+
+# cat_frontend dependencies
+/cat_frontend/node_modules/
+# log files
+/logs/
