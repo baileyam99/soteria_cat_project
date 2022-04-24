@@ -44,6 +44,15 @@ if ($action == 'viewdetails') {
     include('details.json');
 }
 
+if($action == 'Edit'){
+    $codename = filter_input(INPUT_POST, 'codename');
+    $clientName = filter_input(INPUT_POST, 'clientname');
+    $type = filter_input(INPUT_POST, 'casetype');
+    $lead = filter_input(INPUT_POST, 'lead');
+    $description = filter_input(INPUT_POST, 'description');
+    include('editDetails.php');
+
+}
 // edit case details
 if ($action === 'editdetails'){
     $codename = filter_input(INPUT_POST, 'codename');
