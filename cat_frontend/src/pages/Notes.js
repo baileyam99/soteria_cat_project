@@ -66,7 +66,7 @@ class NotesTable extends Component{
     let tb_data = this.state.list.map((data)=>{
       return(
       <tr className='NotesTr' key = {data.codename}>
-        <td className='Notestd1'>{data.codename} {data.username} {data.submitDate}</td>
+        <td className='Notestd1'>Username: {data.username} | Submit Date: {data.submitDate}</td>
         <td className='Notestd2'>{data.body}</td>
       </tr>
       )
