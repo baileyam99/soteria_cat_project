@@ -72,9 +72,9 @@ th {
 #button-wrapper2 {
     display: flex;
     justify-content: center;
-    margin-top: -20px;
+    margin-top: 15px;
     float:right;
-    margin-right:20%;
+    margin-right:33%;
     margin-bottom: 15px;
 }
 
@@ -87,4 +87,17 @@ th {
     width: 90%;
     float:right;
     margin-right:50px;
+}
+
+#button-wrapper3{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    float:right;
+    margin-right:33%;
+}
+
+.CollectButton{
+    width:585px;
+
 }

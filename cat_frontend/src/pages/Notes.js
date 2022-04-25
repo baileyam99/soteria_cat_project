@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AddButton, GeneralButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
-import './Cases.css';
+import './Notes.css';
 
 // No Results
 export const NoResults = () => {
@@ -69,12 +69,11 @@ class NotesTable extends Component{
     
     let codename = this.state.list2.map((data)=>{
       return(
-        <div id= "button-wrapper">
+        <div id= "button-wrapper3">
           <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='evi'>View Evidence</GeneralButton>
             <GeneralButton type='submit' name='action' value='phys'>View Physical Evidence</GeneralButton>
-            <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
             <GeneralButton type='submit' name='action' value='Details'>Details</GeneralButton>
           </form>
           <Link to="/cases/case_list">

@@ -196,7 +196,7 @@ class DisplayCaseDetails extends React.Component {
   }
 
   callAPI(){
-    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdegit tails")
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdetails")
     .then(
       (data) => data.json()
     ).then((data)=>{
@@ -233,11 +233,13 @@ class DisplayCaseDetails extends React.Component {
               <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
               <GeneralButton type='submit' name='action' value='evi'>View Evidence</GeneralButton>
               <GeneralButton type='submit' name='action' value='phys'>View Physical Evidence</GeneralButton>
-              <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
+            </form>
+              <Link to="/cases/case_details/edit">
+              <GeneralButton>Edit Case</GeneralButton>
+              </Link>
               <Link to="/cases/case_list">
                 <GeneralButton>View All Cases</GeneralButton>
               </Link>
-            </form>
           </div>
         </main>
       )
