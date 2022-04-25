@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FormSubmitButton, GeneralButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
-import './Cases.css';
+import './AddEvidence.css';
+import { CaseList } from './Cases';
 
 // View Evidence
 class DisplayAddForm extends Component{
@@ -29,40 +30,11 @@ callAPI(){
 }
 
   render(){
-    let form = this.state.list.map((data)=>{
-      return(
-      <div className='container'>
-        <h1>Collect New Evidence</h1>
-        <form action="http://localhost/soteria_cat_project/cat_backend/evidence/index.php" method="post">
-
-            <label>File Name:</label>
-            <input type="text" name="filename"></input><br />
-
-            <label>Descriptor:</label>
-            <input type="text" name="descriptor"></input><br />
-
-            <label>Size:</label>
-            <input type="text" name="size"></input><br />
-            
-            <label>Date Created/Modified:</label>
-            <input type="text" name="datemodified"></input><br />
-            
-            <label>Item Hash:</label>
-            <input type="text" name="itemhash"></input><br />
-
-            <input type ="hidden" name ="username" value="csarlo"></input>
-            <input type ="hidden" name ="codename" value={data.codename}></input>
-
-            <label>&nbsp;</label>
-            <FormSubmitButton type="submit" name="action" value="add">Collect Evidence</FormSubmitButton><br />
-        </form>
-        </div>
-        )
-    })
+    
 
     let codename = this.state.list.map((data)=>{
       return(
-        <div id= "button-wrapper">
+        <div id= "button-wrapper7">
           <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
@@ -77,6 +49,49 @@ callAPI(){
       )
     })
 
+    let form = this.state.list.map((data)=>{
+      return(
+      
+        
+        <div id='ColllectEvidence-Container2'>
+
+          <form action="http://localhost/soteria_cat_project/cat_backend/evidence/index.php" method="post">
+
+              <div className='FileName'>
+              <label>File Name:</label>
+              <input type="text" name="filename"></input><br />
+              </div>
+
+              <div className='Descriptor2'>
+              <label>Descriptor:</label>
+              <input type="text" name="descriptor"></input><br />
+              </div>
+
+              <div className='Size'>
+              <label>Size:</label>
+              <input type="text" name="size"></input><br />
+              </div>
+              
+              <div className='Date'>
+              <label>Date Created/Modified:</label>
+              <input type="text" name="datemodified"></input><br />
+              </div>
+              
+              <div className='Item'>
+              <label>Item Hash:</label>
+              <input type="text" name="itemhash"></input><br />
+              </div>
+
+              <input type ="hidden" name ="username" value="csarlo"></input>
+              <input type ="hidden" name ="codename" value={data.codename}></input>
+
+              <label>&nbsp;</label>
+              <FormSubmitButton type="submit" name="action" value="add">Collect Evidence</FormSubmitButton><br />
+          </form>
+        </div>
+        )
+    })
+
     return(
     <main>
         {codename}
@@ -86,10 +101,13 @@ callAPI(){
   }
 };
 
+
+
 // Add Evidence Page
 export const AddEvidencePage = () => {
     return (
       <main>
+        <h1>Collect New Evidence</h1>
         <DisplayAddForm />
       </main>
     );

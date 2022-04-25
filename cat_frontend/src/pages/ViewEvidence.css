@@ -69,12 +69,12 @@ th {
     margin-right:25%;
     margin-bottom: 15px;
 }
-#button-wrapper2 {
+#button-wrapper5 {
     display: flex;
     justify-content: center;
-    margin-top: -20px;
+    margin-top: 15px;
     float:right;
-    margin-right:20%;
+    margin-right:32%;
     margin-bottom: 15px;
 }
 
@@ -88,3 +88,17 @@ th {
     float:right;
     margin-right:50px;
 }
+
+#button-wrapper4{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    float:right;
+    margin-right:32%;
+}
+
+.CollectButton2{
+    width:640px;
+
+}
+
