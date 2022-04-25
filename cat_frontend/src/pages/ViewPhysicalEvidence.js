@@ -88,7 +88,7 @@ callAPI2(){
       return (
         <div id= "button-wrapper2">
           <Link to="/cases/view_physical_evidence/collect">
-            <AddButton className='CollectButton'>Collect Evidence</AddButton>
+            <AddButton className='CollectButton'>Collect Physical Evidence</AddButton>
           </Link>
         </div>
       )

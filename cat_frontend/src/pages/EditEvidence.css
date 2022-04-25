@@ -1,0 +1,40 @@
+#EEButton-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-right:1%;
+}
+
+.EEContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    flex-direction: column;
+}
+
+.EEFileName{
+    margin-bottom: 15px;
+}
+
+.EEDescriptor{
+    margin-bottom: 15px;
+}
+
+.EESize{
+    margin-bottom: 15px;
+    margin-right:40px;
+}
+
+.EEDate{
+    margin-bottom: 15px;
+    margin-left:85px;
+}
+
+.EEItem{
+    margin-bottom: 15px;
+}
+
+.EECollector{
+    margin-bottom: 15px;
+    margin-right: 95px;
+}

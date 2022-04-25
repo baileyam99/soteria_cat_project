@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormSubmitButton, GeneralButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
-import './Cases.css';
+import './EditEvidence.css';
 
 // View Evidence
 class DisplayEditForm extends Component{
@@ -73,30 +73,42 @@ callAPI3(){
 
     let form = this.state.list2.map((data)=>{
       return(
-      <div className='container'>
-        <h1>Edit Evidence</h1>
+      <div className='EEContainer'>
+        
         <form action="." method="post">
 
+            <div className='EEFileName'> 
             <label>File Name:</label>
             <input type="text" name="filename" value={data.fileName}></input><br />
+            </div>
 
+            <div className='EEDescriptor'> 
             <label>Descriptor:</label>
             <input type="text" name="descriptor" value={data.descriptor}></input><br />
+            </div>
 
+            <div className='EESize'> 
             <label>Size:</label>
             <input type="text" name="size" value={data.size}></input><br />
-            
+            </div>
+
+            <div className='EEDate'> 
             <label>Date Created/Modified:</label>
             <input type="text" name="datemodified" value={data.dateModified}></input><br />
-            
+            </div>
+
+            <div className='EEItem'> 
             <label>Item Hash:</label>
             <input type="text" name="itemhash" value={data.itemHash}></input><br />
+            </div>
 
+            <div className='EECollector'> 
             <label>Collector: </label>
             <select name="collector">
                 {collector}
             </select><br/>
             {code}
+            </div>
 
             <label>&nbsp;</label>
             <FormSubmitButton type="submit" name="action" value="add">Submit</FormSubmitButton><br />
@@ -107,7 +119,7 @@ callAPI3(){
 
     let codename = this.state.list.map((data)=>{
       return(
-        <div id= "button-wrapper">
+        <div id= "EEButton-wrapper">
           <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
@@ -135,6 +147,7 @@ callAPI3(){
 export const EditEvidencePage = () => {
     return (
       <main>
+        <h1>Edit Evidence</h1>
         <DisplayEditForm />
       </main>
     );

@@ -17,7 +17,7 @@
 
 .cat {
     text-align: left;
-    padding-left: 20px;
+    margin-left: 20px;
     font-family: 'Source Sans Pro';
     color: #fff;
 }
@@ -61,7 +61,7 @@ main {
     padding: .5em 2em .25em;
 }
 footer {
-    margin-top: 100px;
+    margin-top: 75px;
     padding-right: 45%;
     border-top: 2px solid black;
     height: 50px;

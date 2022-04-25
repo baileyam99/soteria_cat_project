@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormSubmitButton, GeneralButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
-import './Cases.css';
+import './EditPhysicalEvidence.css';
 
 // View Evidence
 class DisplayEditForm extends Component{
@@ -73,23 +73,31 @@ callAPI3(){
 
     let form = this.state.list2.map((data)=>{
       return(
-      <div className='container'>
-        <h1>Edit Evidence</h1>
+      <div className='EPELabelContainer'>
+        
         <form action="." method="post">
 
+            <div className='EPEIdentifier'>
             <label>Identifier:</label>
             <input type="text" name="identifier" value={data.identifier}></input><br />
+            </div>
 
+            <div className='EPEDescription'>
             <label>Description:</label>
             <input type="text" name="description" value={data.description}></input><br />
+            </div>
 
+            <div className='EPEDisposition'>
             <label>Disposition:</label>
             <input type="text" name="disposition" value={data.disposition}></input><br />
+            </div>
 
+            <div className='EPECollector'>
             <label>Collector: </label>
             <select name="collector">
                 {collector}
             </select><br/>
+            </div>
 
             <label>&nbsp;</label>
             <FormSubmitButton type="submit" name="action" value="add">Submit</FormSubmitButton><br />
@@ -100,7 +108,7 @@ callAPI3(){
 
     let codename = this.state.list.map((data)=>{
       return(
-        <div id= "button-wrapper">
+        <div id= "EditEvidence-button-wrapper">
           <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
@@ -128,6 +136,7 @@ callAPI3(){
 export const EditPhysEvidencePage = () => {
     return (
       <main>
+        <h1>Edit Physical Evidence</h1>
         <DisplayEditForm />
       </main>
     );

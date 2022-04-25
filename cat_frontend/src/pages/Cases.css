@@ -65,9 +65,7 @@ th {
     display: flex;
     justify-content: center;
     margin-top: 15px;
-    float:right;
-    margin-right:25%;
-    margin-bottom: 15px;
+    margin-right:1%;
 }
 #button-wrapper2 {
     display: flex;
@@ -84,7 +82,40 @@ th {
     flex-direction: column;
     justify-content: right;
     border: 1.5px solid #323232;
-    width: 90%;
+    width: 100%;
     float:right;
     margin-right:50px;
+}
+
+.CasesEditCaseCodename{
+    margin-top:15px;
+    margin-right:10px;
+}
+
+.CasesEditCaseClientName{
+    margin-top:15px;
+}
+
+.CasesEditCaseCaseType{
+    margin-top:15px;
+    margin-right:85px;
+}
+
+.CasesEditCaseCaseLead{
+    margin-top:15px;
+    margin-right:105px;
+}
+
+.CasesEditCaseDescription{
+    margin-top:25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.DescriptionTextArea{
+    width: 30%;
+    margin-left:auto;
+    margin-right:auto;
+    
 }

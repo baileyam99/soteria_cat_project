@@ -413,24 +413,34 @@ class EditCaseForm extends React.Component{
     let formdata = this.state.list3.map((data3)=>{
       return(
       <>
+        <div className= 'CasesEditCaseCodename'>
         <label>Codename:</label>
         <input type="text" name="codename" value={data3.codename}/><br/>
+        </div>
 
+        <div className= 'CasesEditCaseClientName'>
         <label>Client Name:</label>
         <input type="text" name="clientname" value={data3.clientName}/><br/>
+        </div>
 
+        <div className= 'CasesEditCaseCaseType'>
         <label>Case Type:</label>
         <select name="casetype">
           {types}
         </select><br/>
+        </div>
             
+        <div className= 'CasesEditCaseCaseLead'>
         <label>Case Lead:</label>
         <select name="lead">
           {leads}
         </select><br/>
+        </div>
             
+        <div className= 'CasesEditCaseDescription'>    
         <label>Description: </label>
-        <textarea id="description" name="description" rows="4" cols="50">{data3.description}</textarea> <br/>
+        <textarea className='DescriptionTextArea' id="description" name="description" rows="4" cols="50">{data3.description}</textarea> <br/>
+        </div>
       </>
       )
     })
