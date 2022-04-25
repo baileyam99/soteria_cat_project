@@ -42,7 +42,6 @@ main {
 }
 
 table, th, td {
-    text-align: center;
     border: 1.5px solid #323232;
 }
 
@@ -92,7 +91,45 @@ th {
 #button-wrapper3{
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 10px;
     float:right;
     margin-right:30%;
+    padding-bottom: 25px;
+}
+
+.NotesTr{
+    display: block;
+    word-wrap: break-word;
+    max-width: 1650;
+}
+
+.Notestd1{
+    display: block;
+    text-align: left;
+    background-color: white;
+    color:black;
+}
+
+.Notestd2{
+    display: block;
+    text-align: left;
+    max-width: 1650px;
+    height:100px;
+    word-wrap: break-word;
+    background-color: #4290E8;
+    color:white;
+}
+
+.NotesTableHeader{
+    text-align: left;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.NotesThCodeName{
+    text-align: left;
+    
 }

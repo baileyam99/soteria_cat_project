@@ -58,11 +58,9 @@ class NotesTable extends Component{
   render(){
     let tb_data = this.state.list.map((data)=>{
       return(
-      <tr key = {data.codename}>
-        <td>{data.codename}</td>
-        <td>{data.submitDate}</td>
-        <td>{data.body}</td>
-        <td>{data.username}</td>
+      <tr className='NotesTr' key = {data.codename}>
+        <td className='Notestd1'>{data.codename} {data.username} {data.submitDate}</td>
+        <td className='Notestd2'>{data.body}</td>
       </tr>
       )
     })
@@ -102,13 +100,8 @@ class NotesTable extends Component{
         <div className="container">
           <table className="center">
             <thead>
-              <tr>
-                <th>Codename</th>
-                <th>Submit Date</th>
-                <th>Body</th>
-                <th>Username</th>
-              </tr>
               </thead>
+              <th>{codename}</th>
               <tbody>
                 {tb_data}
               </tbody>
