@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormSubmitButton, GeneralButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
-import './Cases.css';
+import './AddPhysicalEvidence.css';
 
 // View Evidence
 class DisplayAddForm extends Component{
@@ -31,18 +31,23 @@ callAPI(){
   render(){
     let form = this.state.list.map((data)=>{
         return(
-        <div className='container'>
-            <h1>Collect New Physical Evidence</h1>
+        <div className='ColllectEvidence-Container'>
+            
             <form action="http://localhost/soteria_cat_project/cat_backend/physInv/index.php" method="post">
-        
+                <div className='Identifier'>
                 <label>Identifier:</label>
                 <input type="text" name="identifier"/><br/>
+                </div>
 
+                <div className='Description'>
                 <label>description:</label>
                 <input type="text" name="description"/><br/>
+                </div>
 
+                <div className='Disposition'>
                 <label>disposition:</label>
                 <input type="text" name="disposition"/><br/>
+                </div>
 
                 <input type ="hidden" name ="username" value="csarlo"/>
                 <input type ="hidden" name ="codename" value={data.codename}/>
@@ -56,7 +61,7 @@ callAPI(){
 
     let codename = this.state.list.map((data)=>{
       return(
-        <div id= "button-wrapper">
+        <div id= "button-wrapper6">
           <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
@@ -83,6 +88,7 @@ callAPI(){
 export const AddPhysEvidencePage = () => {
     return (
       <main>
+        <h1>Collect New Physical Evidence</h1>
         <DisplayAddForm />
       </main>
     );

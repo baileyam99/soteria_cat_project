@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AddButton, DetailsButton, GeneralButton, DeleteButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
-import './Cases.css';
+import './ViewEvidence.css';
 
 // View Evidence
 class DisplayEvidenceTable extends Component{
@@ -71,7 +71,7 @@ callAPI2(){
 
     let codename = this.state.list2.map((data)=>{
       return(
-        <div id= "button-wrapper">
+        <div id= "button-wrapper4">
           <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
@@ -87,9 +87,9 @@ callAPI2(){
 
     let addnew = this.state.list2.map(()=>{
       return (
-        <div id= "button-wrapper2">
+        <div id= "button-wrapper5">
           <Link to="/cases/view_evidence/collect">
-            <AddButton>Collect Evidence</AddButton>
+            <AddButton className='CollectButton2'>Collect Evidence</AddButton>
           </Link>
         </div>
       )
