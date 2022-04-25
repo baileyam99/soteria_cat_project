@@ -32,19 +32,7 @@ if ($action == 'viewevi') {
     include('phyevidence.json');
 }
 
-if ($action === 'Return to List'){
-    $codename = filter_input(INPUT_POST, 'codename');
-
-    if ($codename != false) {
-        header("Location: viewPhysEvidence.php?codename=$codename");
-     }
-}
-
-if ($action === 'Intake Physical Evidence'){
-    $codename = filter_input(INPUT_POST, 'codename');
-    header("Location: addPhysEvidence.php?codename=$codename");
-}
-
+// Add Physical Evidence
 if ($action === 'add'){
     $codename = filter_input(INPUT_POST, 'codename');
     $identifier = filter_input(INPUT_POST, 'identifier');
@@ -61,6 +49,7 @@ if ($action === 'add'){
     header("Location: http://localhost/soteria_cat_project/cat_backend/physInv/index.php?action=getevi&codename=$codename");
 }
 
+// Edit Physical Evidence
 if ($action === 'Edit'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
@@ -71,6 +60,7 @@ if ($action === 'Edit'){
     include('editPhysEvidence.php');
 }
 
+// Update Physical Evidence
 if ($action === 'Update'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
@@ -82,14 +72,10 @@ if ($action === 'Update'){
     header("Location: viewPhysEvidence.php?codename=$codename");
 }
 
+// Delete Physical Evidence
 if ($action === 'Delete'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
     deletePhysEvidence($codename, $idNum);
-    header("Location: viewPhysEvidence.php?codename=$codename");
-}
-
-if ($action === 'Return to Details'){
-    $codename = filter_input(INPUT_POST, 'codename');
-    header("Location: ../caseList/viewCaseDetails.php?codename=$codename");
+    header("Location: http://localhost/soteria_cat_project/cat_backend/evidence/index.php?action=getevi&codename=$codename");
 }

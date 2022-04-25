@@ -128,6 +128,7 @@ CREATE TABLE `indices` (
 --
 
 CREATE TABLE `notes` (
+  `ID` int(11) NOT NULL,
   `codename` varchar(255) DEFAULT NULL,
   `submitDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `body` text NOT NULL,
@@ -220,7 +221,9 @@ ALTER TABLE `indices`
 -- Indexes for table `notes`
 --
 ALTER TABLE `notes`
-  ADD KEY `codename_index_notes` (`codename`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `codename_index_notes` (`codename`),
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Indexes for table `physicalinventory`

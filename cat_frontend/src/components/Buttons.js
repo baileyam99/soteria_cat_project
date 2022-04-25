@@ -16,6 +16,22 @@ export const DetailsButton = styled.button`
   }
 `;
 
+export const DeleteButton = styled.button`
+  background-color: red;
+  color: white;
+  font-size: 100%;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #b00000;
+    font-weight: bold;
+    cursor: pointer
+  }
+`;
+
 export const FormSubmitButton = styled.button`
   background-color: #4290E8;
   color: white;
@@ -27,6 +43,22 @@ export const FormSubmitButton = styled.button`
 
   &:hover {
     background-color: #006de8;
+    font-weight: bold;
+    cursor: pointer
+  }
+`;
+
+export const CancelButton = styled.button`
+  background-color: red;
+  color: white;
+  font-size: 110%;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #b00000;
     font-weight: bold;
     cursor: pointer
   }

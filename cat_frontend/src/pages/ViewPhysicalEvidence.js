@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AddButton, GeneralButton } from '../components/Buttons';
+import { AddButton, GeneralButton, DeleteButton, DetailsButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
 import './ViewPhysicalEvidence.css';
 
@@ -52,23 +52,21 @@ callAPI2(){
           <td>{data.description}</td>
           <td>{data.disposition}</td>
           <td>{data.collector}</td>
+          <td>
+            <Link to="/cases/view_physical_evidence/edit">
+              <DetailsButton>Edit</DetailsButton>
+            </Link>
+          </td>
+          <td>
+          <form action="http://localhost/soteria_cat_project/cat_backend/physInv/index.php" method='post'>
+            <input type="hidden" name="idNum" value={data.idNum}></input>
+            <input type="hidden" name="codename" value={data.codename}></input>
+            <DeleteButton type='submit' name='action' value='Delete'>Delete</DeleteButton>
+          </form>
+          </td>
         </tr>
       )
     })
-    if (this.state.list2.codename === null) {
-      tb_data = this.state.list2.map(()=>{
-        return(
-        <tr>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-        </tr>
-        )
-      })
-    }
 
     let codename = this.state.list2.map((data)=>{
       return(
@@ -110,6 +108,8 @@ callAPI2(){
                 <th>Description</th>
                 <th>Disposition</th>
                 <th>Collector</th>
+                <th></th>
+                <th></th>
               </tr>
               </thead>
               <tbody>

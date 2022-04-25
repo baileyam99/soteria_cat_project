@@ -31,14 +31,16 @@ function updateCase(string $codename, string $clientName, string $caseType, stri
 {           
         global $db; 
         $query = "UPDATE caseList 
-        SET clientName = $clientName,
-            caseType = $caseType,
-            description = $description,
-            lead = $lead
-        WHERE codename = $codename";
+        SET codename = :codename,
+            clientName = :clientname,
+            caseType = :caseType,
+            description = :description,
+            lead = :lead
+        WHERE codename = :codename";
         $statement = $db->prepare($query);
         $statement->bindValue(':codename', $codename);
         $statement->bindValue(':clientname', $clientName);
+        $statement->bindValue(':caseType', $caseType);
         $statement->bindValue(':description', $description);
         $statement->bindValue(':lead', $lead);
         $statement->execute();

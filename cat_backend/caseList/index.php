@@ -24,7 +24,18 @@ if ($action == 'view'){
 
 // get details of case
 if ($action == 'Details'){
-    $codename= filter_input(INPUT_POST, 'codename');
+    $codenameGet = filter_input(INPUT_GET, 'codename');
+    $codenamePost = filter_input(INPUT_POST, 'codename');
+    $codename;
+
+    if ($codenameGet == null || $codenameGet == false) {
+        $codename = $codenamePost;
+    }
+
+    if ($codenamePost == null || $codenamePost == false) {
+        $codename = $codenameGet;
+    }
+    
     $case = selectCase($codename);
     
     $json_array = array();
@@ -45,7 +56,7 @@ if ($action == 'viewdetails') {
 }
 
 // edit case details
-if ($action === 'editdetails'){
+if ($action === 'editcase'){
     $codename = filter_input(INPUT_POST, 'codename');
     $clientName = filter_input(INPUT_POST, 'clientname');
     $caseType = filter_input(INPUT_POST, 'casetype');
