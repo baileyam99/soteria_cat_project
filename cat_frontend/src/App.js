@@ -24,6 +24,7 @@ function App() {
   return (
     <Router>
       <Sidebar />
+      <div id = "page-container">
       <Switch>
         <Route path='/' exact component={LoginPage} />
         <Route path='/home' exact component={Home} />
@@ -45,6 +46,7 @@ function App() {
         <Route path='/cases/case_metrics' exact component={CaseMetrics} />
         <Route path='/edit_credentials/edit' exact component={Edit} />
       </Switch>
+      </div>
       <Footer />
     </Router>
   );
