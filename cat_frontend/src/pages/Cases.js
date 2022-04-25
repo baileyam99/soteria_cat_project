@@ -196,7 +196,7 @@ class DisplayCaseDetails extends React.Component {
   }
 
   callAPI(){
-    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdegit tails")
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdetails")
     .then(
       (data) => data.json()
     ).then((data)=>{
