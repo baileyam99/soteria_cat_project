@@ -56,6 +56,13 @@ class NotesTable extends Component{
 }
 
   render(){
+
+    let tb_header = this.state.list.map((data)=>{
+      return(
+        <th>Codename: {data.codename}</th>
+      )
+    })
+
     let tb_data = this.state.list.map((data)=>{
       return(
       <tr className='NotesTr' key = {data.codename}>
@@ -101,7 +108,7 @@ class NotesTable extends Component{
           <table className="center">
             <thead>
               </thead>
-              <th>{codename}</th>
+              {tb_header[0]}
               <tbody>
                 {tb_data}
               </tbody>
