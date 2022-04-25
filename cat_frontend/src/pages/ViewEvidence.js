@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AddButton, GeneralButton } from '../components/Buttons';
+import { AddButton, DetailsButton, GeneralButton, DeleteButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
 import './Cases.css';
 
@@ -47,27 +47,27 @@ callAPI2(){
     let tb_data = this.state.list.map((data)=>{
       return(
         <tr key = {data.codename}>
-          <td>{data.codename}</td>
+          <td>{data.fileName}</td>
           <td>{data.descriptor}</td>
           <td>{data.size}</td>
           <td>{data.dateModified}</td>
           <td>{data.itemHash}</td>
           <td>{data.collector}</td>
+          <td>
+            <Link to="/cases/view_evidence/edit">
+              <DetailsButton>Edit</DetailsButton>
+            </Link>
+          </td>
+          <td>
+            <form action="http://localhost/soteria_cat_project/cat_backend/evidence/index.php" method='post'>
+              <input type="hidden" name="idNum" value={data.idNum}></input>
+              <input type="hidden" name="codename" value={data.codename}></input>
+              <DeleteButton type='submit' name='action' value='Delete'>Delete</DeleteButton>
+            </form>
+          </td>
         </tr>
       )
     })
-    if (this.state.list.codename === null) {
-      tb_data = ()=>{
-        return(
-        <tr>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-          <td>NONE</td>
-        </tr>
-        )
-      }
-    }
 
     let codename = this.state.list2.map((data)=>{
       return(
@@ -76,7 +76,6 @@ callAPI2(){
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
             <GeneralButton type='submit' name='action' value='phys'>View Physical Evidence</GeneralButton>
-            <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
             <GeneralButton type='submit' name='action' value='Details'>Details</GeneralButton>
           </form>
           <Link to="/cases/case_list">
@@ -110,6 +109,8 @@ callAPI2(){
                 <th>Date Modified</th>
                 <th>Item Hash</th>
                 <th>Collector</th>
+                <th></th>
+                <th></th>
               </tr>
               </thead>
               <tbody>

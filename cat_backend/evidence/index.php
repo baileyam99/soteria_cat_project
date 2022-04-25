@@ -11,6 +11,7 @@ if ($action === NULL) {
     }
 }
 
+// Get Evidence
 if($action == 'getevi'){
     $codename = filter_input(INPUT_GET, 'codename');
     $result = viewEvidence($codename);
@@ -24,24 +25,13 @@ if($action == 'getevi'){
     header("Location: http://localhost:3000/cases/view_evidence?codename=$codename");
 }
 
+// View Evidence
 if ($action == 'viewevi') {
     header('Content-type: application/json');
     include('evidence.json');
 }
 
-if ($action === 'Return to List'){
-    $codename = filter_input(INPUT_POST, 'codename');
-
-    if ($codename != false) {
-        header("Location: viewEvidence.php?codename=$codename");
-     }
-}
-
-if ($action === 'Collect Evidence'){
-    $codename = filter_input(INPUT_POST, 'codename');
-    header("Location: addEvidence.php?codename=$codename");
-}
-
+// Add Evidence
 if ($action === 'add'){
     $codename = filter_input(INPUT_POST, 'codename');
     $filename = filter_input(INPUT_POST, 'filename');
@@ -60,6 +50,7 @@ if ($action === 'add'){
     header("Location: http://localhost/soteria_cat_project/cat_backend/evidence/index.php?action=getevi&codename=$codename");
 }
 
+// Edit Evidence
 if ($action === 'edit'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
@@ -72,6 +63,7 @@ if ($action === 'edit'){
     include('editEvidence.php');
 }
 
+// Update Evidence
 if ($action === 'update'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
@@ -85,9 +77,10 @@ if ($action === 'update'){
     header("Location: viewEvidence.php?codename=$codename");
 }
 
+// Delete Evidence
 if ($action === 'Delete'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
     deleteEvidence($codename, $idNum);
-    header("Location: viewEvidence.php?codename=$codename");
+    header("Location: http://localhost/soteria_cat_project/cat_backend/evidence/index.php?action=getevi&codename=$codename");
 }

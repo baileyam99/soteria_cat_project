@@ -61,7 +61,6 @@ callAPI(){
             <input type="hidden" name="codename" value={data.codename}></input>
             <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
             <GeneralButton type='submit' name='action' value='phys'>View Physical Evidence</GeneralButton>
-            <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
             <GeneralButton type='submit' name='action' value='Details'>Details</GeneralButton>
           </form>
           <Link to="/cases/case_list">

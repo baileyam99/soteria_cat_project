@@ -49,17 +49,17 @@ class DisplayCaseTable extends Component{
         <td>{data.caseType}</td>
         <td>{data.description}</td>
         <td>{data.lead}</td>
-        <td>{data.caseStatus}</td>
+        <td>{data.caseStatus ? "Open" : "Closed"}</td>
         <td>{data.openDate}</td>
         <td>
           <form className = "DetailsButton" action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php' method='post'>
             <input type="hidden" name="codename" value={data.codename}></input>
             <DetailsButton type='submit' name='action' value='Details'>Details</DetailsButton>
-            </form>
-            </td>
-            </tr>
-            )
-          })
+          </form>
+        </td>
+      </tr>
+      )
+    })
     return(
       <main>
         <div className="container">
@@ -196,7 +196,7 @@ class DisplayCaseDetails extends React.Component {
   }
 
   callAPI(){
-    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdegit tails")
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdetails")
     .then(
       (data) => data.json()
     ).then((data)=>{
@@ -222,7 +222,7 @@ class DisplayCaseDetails extends React.Component {
             <label>Type: {data.caseType}</label><br/>
             <label>Description: {data.description}</label><br/>
             <label>Case Lead: {data.lead}</label><br/>
-            <label>Status: {data.caseStatus}</label><br/>
+            <label>Status: {data.caseStatus ? "Open" : "Closed"}</label><br/>
             <label>Date Opened: {data.openDate}</label><br/>
             <label>Date Closed: {data.closeDate}</label><br/>
           </div>
@@ -233,11 +233,13 @@ class DisplayCaseDetails extends React.Component {
               <GeneralButton type='submit' name='action' value='getnotes'>View Notes</GeneralButton>
               <GeneralButton type='submit' name='action' value='evi'>View Evidence</GeneralButton>
               <GeneralButton type='submit' name='action' value='phys'>View Physical Evidence</GeneralButton>
-              <GeneralButton type='submit' name='action' value='editcase'>Edit Case</GeneralButton>
-              <Link to="/cases/case_list">
-                <GeneralButton>View All Cases</GeneralButton>
-              </Link>
             </form>
+            <Link to="/cases/case_details/edit">
+              <GeneralButton>Edit Case</GeneralButton>
+            </Link>
+            <Link to="/cases/case_list">
+              <GeneralButton>View All Cases</GeneralButton>
+            </Link>
           </div>
         </main>
       )
@@ -346,13 +348,18 @@ class EditCaseForm extends React.Component{
       super(props)
       this.state = {
           list:[],
-          list2:[]
+          list2:[],
+          list3:[],
+          lead:null,
+          type:null
       }
 
       this.callAPI = this.callAPI.bind(this)
       this.callAPI2 = this.callAPI2.bind(this)
+      this.callAPI3 = this.callAPI3.bind(this)
       this.callAPI();
       this.callAPI2();
+      this.callAPI3();
   }
 
   callAPI(){
@@ -378,6 +385,17 @@ class EditCaseForm extends React.Component{
         })
     })
   }
+  callAPI3(){
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdetails")
+    .then(
+      (data) => data.json()
+    ).then((data)=>{
+        console.log(data)
+        this.setState({
+           list3:data,
+        })
+    })
+  }
 
   render(){
     let types = this.state.list.map((data)=>{
@@ -385,40 +403,48 @@ class EditCaseForm extends React.Component{
         <option value={data.caseType}>{data.caseType}</option>
       )
     })
+
     let leads = this.state.list2.map((data2)=>{
       return(
         <option value={data2.username}>{data2.username}</option>
       )
     })
-    return (
-      <main>
-      <h1>Edit Case</h1>
-      <body>
-          <form action='http://localhost/soteria_cat_project/cat_backend/caseList/index.php?' method='post' id='add_product_form'>
+
+    let formdata = this.state.list3.map((data3)=>{
+      return(
+      <>
+        <label>Codename:</label>
+        <input type="text" name="codename" value={data3.codename}/><br/>
+
+        <label>Client Name:</label>
+        <input type="text" name="clientname" value={data3.clientName}/><br/>
+
+        <label>Case Type:</label>
+        <select name="casetype">
+          {types}
+        </select><br/>
             
-              <label className='ONCLabel1'>{}</label><br/>
+        <label>Case Lead:</label>
+        <select name="lead">
+          {leads}
+        </select><br/>
+            
+        <label>Description: </label>
+        <textarea id="description" name="description" rows="4" cols="50">{data3.description}</textarea> <br/>
+      </>
+      )
+    })
+    return (
+    <main>
+      <h1>Edit Case Details</h1>
+      <form action="http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=editcase" method="post">
 
-              <label className='ONCLabel2'>Client Name:</label>
-              <input className='ONCInput1' type='text' name='clientname'></input><br/>
-            <div id = "OPCWrapper" >
-              <label className='ONCLabel3'>Case Type:</label>
-              <select name='casetype'>
-                {types}
-              </select><br/>
+        {formdata}
 
-              <label className='ONCLabel4'>Case Lead:</label>
-              <select name='lead'>
-                {leads}
-              </select><br/>
-
-              <label className='ONCLabel5'>Description: </label>
-              <textarea className = 'ONCDescription' id='description' name='description' rows='4' cols='50'></textarea><br/><br/>
-
-              <label className='ONCLabel6'>&nbsp;</label>
-              <FormSubmitButton type='submit' name='action' value='opencase'>Open Case</FormSubmitButton><br/>
-            </div>
-          </form>
-      </body>
+        <label>&nbsp;</label>
+        <FormSubmitButton type='submit' name='action' value='editcase'>Submit</FormSubmitButton>
+        <br/>
+      </form>
     </main>
     )
   }
@@ -427,11 +453,7 @@ class EditCaseForm extends React.Component{
 // Edit Case Page
 export const EditCasePage = () => {
   return (
-    <main>
-      <h1>Edit Case</h1>
-      <h2>Sorry, this page is currently under construction.</h2>
-      <p>We'll finish it as quickly as we can. Thanks!</p>
-    </main>
+    <EditCaseForm />
   );
 };
 
