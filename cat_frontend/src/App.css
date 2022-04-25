@@ -23,7 +23,10 @@
 }
 
 html {
-    background-color: #4290e8;  
+    background-color: white;  
+    min-height: 400px;
+    margin-bottom: 100px;
+
 }
 body {
     
@@ -37,7 +40,8 @@ body {
     background-color: white;
     padding-bottom: 2.5rem;
     position: relative;
-    min-height: 100vh;
+
+
 }
 header {
     margin: 0;
