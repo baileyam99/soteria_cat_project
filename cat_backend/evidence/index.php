@@ -21,14 +21,14 @@ if($action == 'getevi'){
         $json_array[] = $row;
     }
     $json = json_encode($json_array);
-    file_put_contents("evidence.json", $json);
+    file_put_contents("../jsons/evidence.json", $json);
     header("Location: http://localhost:3000/cases/view_evidence?codename=$codename");
 }
 
 // View Evidence
 if ($action == 'viewevi') {
     header('Content-type: application/json');
-    include('evidence.json');
+    include('../jsons/evidence.json');
 }
 
 // Add Evidence

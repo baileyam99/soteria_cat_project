@@ -59,12 +59,6 @@ callAPI3(){
 }
 
   render(){
-    let code = this.state.list.map((data)=>{
-        return(
-        <input type ="hidden" name ="codename" value={data.codename}></input>
-        )
-    })
-
     let collector = this.state.list3.map((data)=>{
         return(
         <option value={data.username}>{data.username}</option>

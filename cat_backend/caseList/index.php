@@ -44,7 +44,7 @@ if ($action == 'Details'){
     }
     header('Content-type: application/json');
     $json = json_encode($json_array);
-    file_put_contents("details.json", $json);
+    file_put_contents("../jsons/details.json", $json);
     //include("http://localhost:3000/cases/case_details?codename=$codename");
     header("Location: http://localhost:3000/cases/case_details?codename=$codename");
 }
@@ -52,7 +52,7 @@ if ($action == 'Details'){
 // view details of case
 if ($action == 'viewdetails') {
     header('Content-type: application/json');
-    include('details.json');
+    include("../jsons/details.json");
 }
 
 // edit case details
@@ -77,14 +77,14 @@ if ($action == 'search'){
         $json_array[] = $row;
     }
     $json = json_encode($json_array);
-    file_put_contents("searchresults.json", $json);
+    file_put_contents("../jsons/searchresults.json", $json);
     header("Location: http://localhost:3000/cases/case_list/search?search=$srch");
 }
 
 // view search results
 if ($action === 'viewsearch'){
     header('Content-type: application/json');
-    include('searchresults.json');
+    include('../jsons/searchresults.json');
 }
 
 // get case types
@@ -180,14 +180,14 @@ if($action == 'getnotes'){
         $json_array[] = $row;
     }
     $json = json_encode($json_array);
-    file_put_contents("notes.json", $json);
+    file_put_contents("../jsons/notes.json", $json);
     header("Location: http://localhost:3000/cases/notes?codename=$codename");
 }
 
 // view case notes
 if ($action == 'viewnotes') {
     header('Content-type: application/json');
-    include('notes.json');
+    include('../jsons/notes.json');
 }
 
 // add a new note

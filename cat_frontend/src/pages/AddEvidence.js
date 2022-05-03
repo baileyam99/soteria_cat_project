@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FormSubmitButton, GeneralButton } from '../components/Buttons';
 import { Link } from 'react-router-dom';
 import './AddEvidence.css';
-import { CaseList } from './Cases';
 
 // View Evidence
 class DisplayAddForm extends Component{

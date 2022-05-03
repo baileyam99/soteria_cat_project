@@ -196,7 +196,7 @@ class DisplayCaseDetails extends React.Component {
   }
 
   callAPI(){
-    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdetails")
+    fetch("http://localhost/soteria_cat_project/cat_backend/caselist/index.php?action=viewdetails&num=")
     .then(
       (data) => data.json()
     ).then((data)=>{
@@ -392,7 +392,7 @@ class EditCaseForm extends React.Component{
     ).then((data)=>{
         console.log(data)
         this.setState({
-           list3:data,
+           list3:data
         })
     })
   }
@@ -415,7 +415,7 @@ class EditCaseForm extends React.Component{
       <>
         <div className= 'CasesEditCaseCodename'>
         <label>Codename:</label>
-        <input type="text" name="codename" value={data3.codename}/><br/>
+        <input type="text" name="codename" value={data3.codename}></input><br/>
         </div>
 
         <div className= 'CasesEditCaseClientName'>
@@ -439,7 +439,7 @@ class EditCaseForm extends React.Component{
             
         <div className= 'CasesEditCaseDescription'>    
         <label>Description: </label>
-        <textarea className='DescriptionTextArea' id="description" name="description" rows="4" cols="50">{data3.description}</textarea> <br/>
+        <textarea className='DescriptionTextArea' name="description" rows="4" cols="50">{data3.description}</textarea> <br/>
         </div>
       </>
       )

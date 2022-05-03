@@ -77,5 +77,5 @@ if ($action === 'Delete'){
     $codename = filter_input(INPUT_POST, 'codename');
     $idNum = filter_input(INPUT_POST, 'idNum');
     deletePhysEvidence($codename, $idNum);
-    header("Location: http://localhost/soteria_cat_project/cat_backend/evidence/index.php?action=getevi&codename=$codename");
+    header("Location: http://localhost/soteria_cat_project/cat_backend/physInv/index.php?action=getevi&codename=$codename");
 }
