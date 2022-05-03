@@ -164,7 +164,7 @@ Users can open a new case, list cases, search amongst cases based on specific cr
 	 - [ ] Notes
 
 
-Coming soon: See the [open issues](https://github.com/baileyam99/soteria_cat_project.git/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/baileyam99/soteria_cat_project/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
