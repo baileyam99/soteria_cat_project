@@ -51,7 +51,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The purpose of the Case Administration Tool is to provide Soteria Digital Forensics and Incident Response services with a centralized management console for case administrative documentation. Centralized case management will foster efficient collaboration between team members on projects and automate portions of the reporting process.
+The purpose of the Case Administration Tool is to provide Soteria Digital Forensics and Incident Response services with a centralized management console for case administrative documentation. Centralized case management will foster efficient collaboration between team members on projects and automate portions of the reporting process. 
+<br/>
+This project was commissioned by Soteria Digital Forensics to members of CSCI 462 Software Engineering Practicum. Original contributors are: Alex Bailey, Cliff Sarlo, Skyler Bouder, and Zoe Cass. Handed off to Soteria: May 2022. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
